@@ -1,3 +1,14 @@
+@font-face {
+  font-family: ikaros;
+  src: url(Ikaros-Regular.otf)
+}
+
+h1 {
+  font-family: ikaros;
+  font-size: 10em;
+  padding-top: .5em;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -6,6 +17,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background-image: url('./dark-paths.png') */
 }
 
 code {
