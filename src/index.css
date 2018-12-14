@@ -24,3 +24,43 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+#single-paint {
+  max-height: 80%;
+  max-width: 80%;
+  border-radius: 10%;
+  border: 1px solid rgb(36, 36, 36);
+  box-shadow: 0 0 20px 8px rgb(199, 199, 199);
+}
+
+#single-paint:hover{
+  box-shadow: 0 0 20px 10px rgb(173, 172, 172);
+}
+
+.section {
+  padding: 3rem 1.5rem;
+  display: block;
+}
+
+.container {
+  margin: 0 auto;
+  position: relative;
+}
+
+.header {
+  opacity: .85;
+}
+
+#img-url {
+  width: 30%;
+  margin-right: .7em;
+  border: none;
+  border: 2px solid rgb(194, 194, 194);
+ 
+}
+
+input {
+  padding: .5em;
+  border-radius: 4px;
+  
+}

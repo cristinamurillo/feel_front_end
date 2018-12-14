@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SinglePaint from './SinglePaint'
 import axios from 'axios'
 const PAINTINGS_URL = "http://localhost:3000/paintings/"
 class PaintingSelect extends Component {
@@ -27,14 +28,23 @@ class PaintingSelect extends Component {
             })
     }
 
+    paintingDisplay = () => {
+        axios.get(PAINTINGS_URL)
+            .then(response => {
+                console.log(response.data)
+            })
+    }
+
     render() {
     return (
-        <div>
+        <div class="section">
+        <h3 class="header">Choose an Artwork</h3>
             <form onSubmit={this.submitHandler}>
-                <input type="text" name="img_url" placeholder="Image URL" value={this.state.img_url} onChange ={this.changeHandler}/>
+                <input id="img-url" type="text" name="img_url" placeholder="Image URL" value={this.state.img_url} onChange ={this.changeHandler}/>
                 <input type= "submit" value="Submit"/>
             </form>
-        
+            {/* {this.paintingDisplay()} */}
+            <SinglePaint />
         </div>
     );
     }
