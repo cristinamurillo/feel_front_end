@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
+import {connect} from "react-redux"
+import {fetchPaintings} from '../redux/paintingActions'
 import SinglePaint from './SinglePaint'
 import axios from 'axios'
+
+
+
 const PAINTINGS_URL = "http://localhost:3000/paintings/"
+
 class PaintingSelect extends Component {
+
+    componentDidMount() {
+        this.props.dispatch(fetchPaintings())
+    }
 
     state = {
         img_url: ""
@@ -28,14 +38,13 @@ class PaintingSelect extends Component {
             })
     }
 
-    paintingDisplay = () => {
-        axios.get(PAINTINGS_URL)
-            .then(response => {
-                console.log(response.data)
-            })
-    }
+    // paintingList = () => {
+        
+    // }
 
     render() {
+        const { error, loading, paintings } = this.props //come back to this to add loading and error
+
     return (
         <div class="section">
         <h3 class="header">Choose an Artwork</h3>
@@ -45,9 +54,16 @@ class PaintingSelect extends Component {
             </form>
             {/* {this.paintingDisplay()} */}
             <SinglePaint />
+            {paintings.map(painting => console.log(painting))}
         </div>
     );
     }
 }
 
-export default PaintingSelect;
+const mapStateToProps = state => ({
+    paintings: state.paintings,
+    loading: state.loading,
+    error: state.error
+})
+
+export default connect(mapStateToProps)(PaintingSelect);
