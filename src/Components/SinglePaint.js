@@ -1,21 +1,30 @@
 import React, { Component } from 'react';
-import axios from 'axios'
-
+import {connect} from 'react-redux'
+import {fetchColors} from '../redux/animationActions'
 
 
 class SinglePaint extends Component {
 
+  
+    clickHandler = () => {
+        this.props.dispatch(fetchColors(this.props.img.id))
+        console.log(this.props)
+    }
    
     render() {
-        console.log(this.props.img)
         let url = this.props.img.attributes["img-url"]
     return (
        
-        <div class="section">
-            <img id= "single-paint" src={url} alt="Painting"/>
+        <div className="section">
+            <img onClick={this.clickHandler} id="single-paint" data-reactid={this.props.img.id} src={url} alt="Painting"/>
         </div>
     );
     }
 }
 
-export default SinglePaint;
+const mapStateToProps = state => ({
+    colors: state.animations.colors,
+    loading: state.animations.loading
+})
+
+export default connect(mapStateToProps)(SinglePaint);
