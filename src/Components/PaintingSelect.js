@@ -5,7 +5,6 @@ import SinglePaint from './SinglePaint'
 import axios from 'axios'
 
 
-
 const PAINTINGS_URL = "http://localhost:3000/paintings/"
 
 class PaintingSelect extends Component {
@@ -26,11 +25,8 @@ class PaintingSelect extends Component {
         })
     }
     
-    clickHandler = () => {
-        
-    }
 
-    submitHandler = (e) => {
+    submitURLHandler = (e) => {
         e.preventDefault()
         console.log("submit hit")
         axios.post(PAINTINGS_URL, {img_url: this.state.img_url})
@@ -61,15 +57,15 @@ class PaintingSelect extends Component {
     render() {
         const { error, loading, paintings } = this.props //come back to this to add loading and error
     return (
-        <div class="section">
-        <h3 class="header">Choose an Artwork</h3>
-            <form onSubmit={this.submitHandler}>
+        <div className="section">
+        <h3 className="header">Choose an Artwork</h3>
+            <form onSubmit={this.submitURLHandler}>
                 <input id="img-url" type="text" name="img_url" placeholder="Image URL" value={this.state.img_url} onChange ={this.changeHandler}/>
                 <input type= "submit" value="Submit"/>
             </form>
 
             {paintings.length > 0 && <SinglePaint img={paintings[this.state.currentPaint]}/>}
-            <button onClick={() => this.randomNum(paintings)} class="med-button">Another One</button>
+            <button onClick={() => this.randomNum(paintings)} className="med-button">Another One</button>
             {/* {paintings.map(painting => console.log(painting))} */}
         </div>
     );
@@ -77,9 +73,9 @@ class PaintingSelect extends Component {
 }
 
 const mapStateToProps = state => ({
-    paintings: state.paintings,
-    loading: state.loading,
-    error: state.error
+    paintings: state.paintings.paintings,
+    loading: state.paintings.loading,
+    error: state.paintings.error
 })
 
 export default connect(mapStateToProps)(PaintingSelect);
