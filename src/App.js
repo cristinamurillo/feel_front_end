@@ -9,9 +9,10 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>MOOD INDIGO</h1>
         {this.props.colors.length === 0 ? 
-        <PaintingSelect />:
+        <div>
+        <h1>MOOD INDIGO</h1>
+        <PaintingSelect /></div>:
         <Animation />
         }
       </div>

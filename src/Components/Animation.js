@@ -6,11 +6,15 @@ import styled from 'styled-components'
 class Animation extends Component {
 
   render(){
+      let colors = this.props.colors 
+      console.log("hi")
+      console.log(colors)
       let HaloRing = styled.div`
         width: 200px;
         height: 200px;
         border-radius: 50%;
-        box-shadow: 0px 0px 60px 20px blue, inset 0 0 1px 1px teal;
+        box-shadow: 0px 0px 60px 20px rgb(${colors[0][0]},${colors[0][1]},${colors[0][2]}), 
+                    inset 0 0 60px 20px rgb(${colors[7][0]},${colors[7][1]},${colors[7][2]});
       `;
 
     let InnerCircle = styled.div`
@@ -20,7 +24,8 @@ class Animation extends Component {
       transform-style: preserve-3d;
       border-radius: 100%;
       box-sizing: border-box;
-      box-shadow: 0px 5px 70px 10px cyan, inset 0 0 40px white;
+      box-shadow: 0px 5px 70px 10px rgb(${colors[2][0]},${colors[2][1]},${colors[2][2]}), 
+                  inset 0 0 40px rgb(${colors[3][0]},${colors[3][1]},${colors[3][2]});
 
       ::before {
         content: "";
@@ -35,7 +40,7 @@ class Animation extends Component {
         height: 10%;
         border-radius: 100%;
         box-sizing: border-box;
-        box-shadow: 0 0 100px 4px white;
+        box-shadow: 0 0 100px 40px rgb(${colors[5][0]},${colors[5][1]},${colors[5][2]});
         transform: translateZ(-90px);
       }
 
@@ -52,7 +57,7 @@ class Animation extends Component {
         height: 10%;
         border-radius: 100%;
         box-sizing: border-box;
-        box-shadow: 0 0 100px 4px black;
+        box-shadow: 0 0 100px 4px rgb(${colors[4][0]},${colors[4][1]},${colors[4][2]});
         transform: translateZ(90px);
       }
 
@@ -76,21 +81,21 @@ class Animation extends Component {
 
 
       return(
-        <div>
-        <div className="haloCont">
-            <div className="spinner">
-                <HaloRing></HaloRing>
+        <div className ="animation-full">
+            <div className="haloCont">
+                <div className="spinner">
+                    <HaloRing></HaloRing>
+                </div>
             </div>
-        </div>
 
-        <div className="view">
-            <div className="plane main">
-                <InnerCircle></InnerCircle>
-                <InnerCircle></InnerCircle>
-                <InnerCircle></InnerCircle>
-                <InnerCircle></InnerCircle>
+            <div className="view">
+                <div className="plane main">
+                    <InnerCircle></InnerCircle>
+                    <InnerCircle></InnerCircle>
+                    <InnerCircle></InnerCircle>
+                    <InnerCircle></InnerCircle>
+                </div>
             </div>
-        </div>
         </div>
 
       )

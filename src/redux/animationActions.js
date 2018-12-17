@@ -20,8 +20,6 @@ export const fetchColors = (id) => {
         return axios.get(`http://localhost:3000/paintings/${id}/colors`)
             .then(response => {
                 let colors = response.data
-                console.log("we fetched colors")
-                console.log(colors)
                 dispatch(fetchColorsSuccess(colors))
                 return colors 
             })

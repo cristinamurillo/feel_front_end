@@ -76,10 +76,15 @@ input {
 
 /* animation styling */
 
+.animation-full {
+  background-color: #222;
+  height: 600px;
+
+}
 /* halo animation */
 .haloCont {
   position: absolute;
-	top: 30%;
+	top: 40%;
 	left: 45%;
 	width: 28px;
 	height: 28px;
@@ -108,7 +113,7 @@ input {
   right: 0;
   bottom: 0;
   perspective: 100px;
-  animation: perspect 20s infinite linear;
+  animation: perspect 15s infinite linear;
 }
 
 .plane {
