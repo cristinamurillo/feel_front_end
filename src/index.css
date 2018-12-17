@@ -28,7 +28,7 @@ code {
 #single-paint {
   max-height: 80%;
   max-width: 80%;
-  border-radius: 10%;
+  border-radius: 20px;
   border: 1px solid rgb(36, 36, 36);
   box-shadow: 0 0 20px 8px rgb(199, 199, 199);
 }
@@ -62,5 +62,14 @@ code {
 input {
   padding: .6em;
   border-radius: 4px;
-  
+}
+
+.med-button {
+  padding: 1em;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.med-button:hover {
+  background-color: rgb(221, 212, 255); 
 }

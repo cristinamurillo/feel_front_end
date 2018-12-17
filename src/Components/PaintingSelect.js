@@ -15,14 +15,20 @@ class PaintingSelect extends Component {
     }
 
     state = {
-        img_url: ""
+        img_url: "",
+        paintsSeen: [0],
+        currentPaint: 0
     }
 
     changeHandler = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         })
-    }  
+    }
+    
+    clickHandler = () => {
+        
+    }
 
     submitHandler = (e) => {
         e.preventDefault()
@@ -38,13 +44,22 @@ class PaintingSelect extends Component {
             })
     }
 
-    // paintingList = () => {
+    randomNum = (array) => {
+        let index = 0
+        while(this.state.paintsSeen.includes(index)) {
+            index = Math.floor(Math.random()*array.length)
+        }
         
-    // }
+        this.setState({
+            paintsSeen: [...this.state.paintsSeen, index],
+            currentPaint: index 
+        })
+     
+        return index 
+    }
 
     render() {
         const { error, loading, paintings } = this.props //come back to this to add loading and error
-
     return (
         <div class="section">
         <h3 class="header">Choose an Artwork</h3>
@@ -52,9 +67,10 @@ class PaintingSelect extends Component {
                 <input id="img-url" type="text" name="img_url" placeholder="Image URL" value={this.state.img_url} onChange ={this.changeHandler}/>
                 <input type= "submit" value="Submit"/>
             </form>
-            {/* {this.paintingDisplay()} */}
-            <SinglePaint />
-            {paintings.map(painting => console.log(painting))}
+
+            {paintings.length > 0 && <SinglePaint img={paintings[this.state.currentPaint]}/>}
+            <button onClick={() => this.randomNum(paintings)} class="med-button">Another One</button>
+            {/* {paintings.map(painting => console.log(painting))} */}
         </div>
     );
     }
