@@ -74,13 +74,32 @@ input {
   background-color: rgb(221, 212, 255); 
 }
 
+.back-button {
+  margin-right: 80%;
+  margin-top: 2%;
+}
+
+.fade-in {
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 1s;
+}
+
+#backVid {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+}
+
 /* animation styling */
 
-.animation-full {
-  background-color: #222;
-  height: 600px;
 
-}
+
+
 /* halo animation */
 .haloCont {
   position: absolute;
@@ -155,4 +174,13 @@ input {
   100% {
       perspective: 100px;
   }
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
