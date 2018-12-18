@@ -29,6 +29,13 @@ class PaintingSelect extends Component {
         })
     }
     
+    handleCheckChange = event => {
+        console.log(this.state.singleView)
+        this.setState({
+            singleView: !this.state.singleView
+        })
+    }
+    
     submitURLHandler = (e) => {
         e.preventDefault()
         console.log("submit hit")
@@ -66,7 +73,7 @@ class PaintingSelect extends Component {
             <div id="toggle">
             <p>Toggle View</p>
             <label class="switch">
-                <input type="checkbox"/>
+                <input type="checkbox" onChange={this.handleCheckChange} checked={this.state.singleView}/>
                 <span class="slider"/>
             </label>
             </div>
@@ -74,11 +81,10 @@ class PaintingSelect extends Component {
                 <input id="img-url" type="text" name="img_url" placeholder="Image URL" value={this.state.img_url} onChange ={this.changeHandler}/>
                 <input type= "submit" value="Submit"/>
             </form>
-           
-           <PaintList />
-            {/* {paintings.length > 0 && <SinglePaint img={paintings[this.state.currentPaint]}/>} */}
-            {/* <button onClick={() => this.randomNum(paintings)} className="med-button">Another One</button> */}
-           
+           {this.state.singleView && paintings.length > 1 ? 
+           <div><SinglePaint img={paintings[this.state.currentPaint]}/>
+           <button onClick={() => this.randomNum(paintings)} className="med-button">Another One</button> </div>: 
+           <PaintList/>}
 
         </div>
     );

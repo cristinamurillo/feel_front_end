@@ -12,6 +12,7 @@ class SinglePaint extends Component {
     }
    
     render() {
+        console.log(this.props)
         let url = this.props.img.attributes["img-url"]
     return (
         <div className="section">

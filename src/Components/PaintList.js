@@ -15,7 +15,7 @@ class PaintList extends Component {
         let paintings = this.props.paintings
         console.log(paintings[0])
             return (
-                <div className="paint-list">
+                <div className="paint-list fade-in">
                      {paintings.map(painting => {
                          return <img onClick={this.clickHandler} data-id={painting.id} className="listed-paint" src={painting.attributes["img-url"]} alt="Painting"/>
                      })}       
