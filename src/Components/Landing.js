@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import PaintingSelect from './PaintingSelect'
+import {withRouter} from 'react-router-dom'
 
 class Landing extends Component {
 
     render() {
+        console.log('hi from landing')
     return (
         <div className="section">
             <h1 className="fade-in">MOOD INDIGO</h1>
@@ -14,5 +16,4 @@ class Landing extends Component {
 }
 
 
-
-export default Landing
+export default withRouter(Landing)

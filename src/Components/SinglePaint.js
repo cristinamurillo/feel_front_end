@@ -9,7 +9,7 @@ class SinglePaint extends Component {
   
     clickHandler = () => {
         this.props.dispatch(fetchColors(this.props.img.id))
-        console.log(this.props)
+    
         this.props.history.push('/animation')
 
         
