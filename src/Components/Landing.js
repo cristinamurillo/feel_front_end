@@ -5,13 +5,13 @@ import {withRouter} from 'react-router-dom'
 class Landing extends Component {
 
     render() {
-        console.log('hi from landing')
-    return (
-        <div className="section">
-            <h1 className="fade-in">MOOD INDIGO</h1>
-            <PaintingSelect />
-        </div>
-    );
+        return (
+            <div className="section">
+                <h1 className="fade-in">MOOD INDIGO</h1>
+                <h3 className="header fade-in slower" id="subtitle">abstractly visualize your vibe</h3>
+                <PaintingSelect />
+            </div>
+        );
     }
 }
 
