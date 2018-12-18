@@ -20,7 +20,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* background-image: url('./dark-paths.png') */
-  background: linear-gradient(270deg, indigo, #babec1, #222222);
+  background: linear-gradient(270deg, rgb(39, 9, 59), #babec1, #222222);
   background-size: 600% 600%;
   animation: gradientShift 30s ease infinite;
 }
