@@ -62,11 +62,18 @@ class PaintingSelect extends Component {
         return (
         <div className="section">
         <h3 className="header">Choose an Artwork</h3>
+            <div id="toggle">
+            <p>Toggle View</p>
+            <label class="switch">
+                <input type="checkbox"/>
+                <span class="slider"/>
+            </label>
+            </div>
             <form onSubmit={this.submitURLHandler}>
                 <input id="img-url" type="text" name="img_url" placeholder="Image URL" value={this.state.img_url} onChange ={this.changeHandler}/>
                 <input type= "submit" value="Submit"/>
             </form>
-
+           
             {paintings.length > 0 && <SinglePaint img={paintings[this.state.currentPaint]}/>}
             <button onClick={() => this.randomNum(paintings)} className="med-button">Another One</button>
             {/* {paintings.map(painting => console.log(painting))} */}
