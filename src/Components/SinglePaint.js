@@ -16,7 +16,7 @@ class SinglePaint extends Component {
     return (
        
         <div className="section">
-            <img onClick={this.clickHandler} id="single-paint" data-reactid={this.props.img.id} src={url} alt="Painting"/>
+            <img onClick={this.clickHandler} className="single-paint" data-reactid={this.props.img.id} src={url} alt="Painting"/>
         </div>
     );
     }

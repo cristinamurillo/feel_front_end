@@ -34,7 +34,7 @@ code {
     monospace;
 }
 
-#single-paint {
+.single-paint {
   max-height: 80%;
   max-width: 80%;
   border-radius: 20px;
