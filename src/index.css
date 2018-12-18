@@ -3,10 +3,19 @@
   src: url(Ikaros-Regular.otf)
 }
 
+@import url('https://fonts.googleapis.com/css?family=Allerta');
+
 h1 {
   font-family: ikaros;
   font-size: 10em;
   padding-top: .5em;
+  margin-bottom: 0;
+}
+
+#subtitle {
+  margin-top: 0;
+  margin-bottom: 10em;
+  font-size: 1.5em;
 }
 
 body {
@@ -17,8 +26,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background-image: url('./dark-paths.png') */
-  background: linear-gradient(270deg, #b7d4e8, #babec1, #222222);
+  background: linear-gradient(270deg, rgb(39, 9, 59), #babec1, #222222);
   background-size: 600% 600%;
   animation: gradientShift 30s ease infinite;
 }
@@ -29,6 +37,14 @@ body {
   100%{background-position:0% 50%}
 }
 
+h2, h3, h6 {
+  font-family: ikaros;
+}
+
+button, input {
+  font-family: 'Allerta', sans-serif;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -36,9 +52,10 @@ code {
 
 .single-paint {
   max-height: 600px;
+  max-width: 100%;
   border-radius: 20px;
   box-shadow: 0 0 20px 2px rgb(0, 0, 0);
-  transition: all .7s;
+  transition: all .5s;
 }
 
 .single-paint:hover{
@@ -66,7 +83,6 @@ code {
   margin-right: .7em;
   border: none;
   border: 2px solid rgb(194, 194, 194);
- 
 }
 
 input {
@@ -79,10 +95,14 @@ input {
   border-radius: 4px;
   font-size: 14px;
   cursor: pointer;
+  background: transparent;
+  box-shadow: 0 0 2px grey;
+  transition: all .5s;
 }
 
 .med-button:hover {
-  background-color: rgb(221, 212, 255); 
+  background-color: rgba(255, 255, 255, 0.4); 
+  border-color: rgb(218, 218, 218);
 }
 
 .back-button {
@@ -101,18 +121,13 @@ input {
 	animation-duration: 1s;
 }
 
-#backVid {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%; 
-  min-height: 100%;
+.slower {
+  animation-duration: 2.8s;
 }
 
+
+
 /* animation styling */
-
-
-
 
 /* halo animation */
 .haloCont {

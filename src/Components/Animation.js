@@ -99,7 +99,7 @@ class Animation extends Component {
 
 
         return(
-            <div className ="animation-full">
+            <div className ="animation-full fade-in">
                 <button onClick={this.goBack} type ="button" className="med-button back-button">
                 Back to Home
                 </button>

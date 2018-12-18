@@ -12,7 +12,6 @@ class SinglePaint extends Component {
 
         this.props.history.push('/animation')
 
-        
     }
    
     render() {
