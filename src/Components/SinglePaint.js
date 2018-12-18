@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
-import { Redirect, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import {fetchColors} from '../redux/animationActions'
 
 
@@ -9,7 +9,7 @@ class SinglePaint extends Component {
   
     clickHandler = () => {
         this.props.dispatch(fetchColors(this.props.img.id))
-    
+
         this.props.history.push('/animation')
 
         
