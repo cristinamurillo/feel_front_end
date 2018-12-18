@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux"
+import {withRouter} from 'react-router-dom'
 import {fetchPaintings} from '../redux/paintingActions'
+import {fetchColors} from '../redux/animationActions'
 import SinglePaint from './SinglePaint'
 import axios from 'axios'
 
@@ -15,6 +17,7 @@ class PaintingSelect extends Component {
 
     state = {
         img_url: "",
+        singleView: true,
         paintsSeen: [0],
         currentPaint: 0
     }
@@ -30,12 +33,10 @@ class PaintingSelect extends Component {
         console.log("submit hit")
         axios.post(PAINTINGS_URL, {img_url: this.state.img_url})
             .then(response => {
-                console.log(response.data)
+                console.log(response)
                 let painting = response.data.data
-                axios.get(PAINTINGS_URL + painting.id + "/colors")
-                    .then(colors => {
-                        console.log(colors.data)
-                    })
+                this.props.dispatch(fetchColors(painting.id))
+                this.props.history.push('/animation')
             })
     }
 
@@ -69,6 +70,7 @@ class PaintingSelect extends Component {
             {paintings.length > 0 && <SinglePaint img={paintings[this.state.currentPaint]}/>}
             <button onClick={() => this.randomNum(paintings)} className="med-button">Another One</button>
             {/* {paintings.map(painting => console.log(painting))} */}
+
         </div>
     );
     }
@@ -76,8 +78,12 @@ class PaintingSelect extends Component {
 
 const mapStateToProps = state => ({
     paintings: state.paintings.paintings,
-    loading: state.paintings.loading,
-    error: state.paintings.error
+    error: state.paintings.error,
+    colors: state.animations.colors,
+    loading: state.animations.loading 
 })
 
-export default connect(mapStateToProps)(PaintingSelect);
+const connectedPaintingSelect = connect(mapStateToProps)(PaintingSelect)
+const routedPaintingSelect = withRouter(connectedPaintingSelect)
+
+export default routedPaintingSelect;

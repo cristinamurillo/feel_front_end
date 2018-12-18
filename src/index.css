@@ -35,15 +35,16 @@ code {
 }
 
 .single-paint {
-  max-height: 80%;
-  max-width: 80%;
+  max-height: 600px;
   border-radius: 20px;
-  border: 1px solid rgb(36, 36, 36);
-  box-shadow: 0 0 20px 8px rgb(199, 199, 199);
+  box-shadow: 0 0 20px 2px rgb(0, 0, 0);
+  transition: all .7s;
 }
 
-#single-paint:hover{
-  box-shadow: 0 0 20px 10px rgb(173, 172, 172);
+.single-paint:hover{
+  box-shadow: 0 0 20px 6px rgb(0, 0, 0);
+  /* transform: translateY(-2px); */
+
 }
 
 .section {
@@ -146,7 +147,7 @@ input {
   bottom: 0;
   perspective: 100px;
   pointer-events:none;
-  animation: perspect 15s infinite linear;
+  animation: perspect 10s infinite linear;
 }
 
 .plane {
