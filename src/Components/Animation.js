@@ -5,6 +5,10 @@ import styled from 'styled-components'
 
 class Animation extends Component {
 
+    goBack = () => {
+        console.log("go back")
+    }
+
   render(){
       let colors = this.props.colors 
       console.log("hi")
@@ -13,7 +17,7 @@ class Animation extends Component {
         width: 200px;
         height: 200px;
         border-radius: 50%;
-        box-shadow: 0px 0px 60px 20px rgb(${colors[0][0]},${colors[0][1]},${colors[0][2]}), 
+        box-shadow: 0px 0px 100px 50px rgb(${colors[0][0]},${colors[0][1]},${colors[0][2]}), 
                     inset 0 0 60px 20px rgb(${colors[7][0]},${colors[7][1]},${colors[7][2]});
       `;
 
@@ -40,7 +44,8 @@ class Animation extends Component {
         height: 10%;
         border-radius: 100%;
         box-sizing: border-box;
-        box-shadow: 0 0 100px 40px rgb(${colors[5][0]},${colors[5][1]},${colors[5][2]});
+        background: rgba(${colors[5][0]},${colors[5][1]},${colors[5][2]}, 0.4)
+        box-shadow: 0 0 100px 10px rgb(${colors[5][0]},${colors[5][1]},${colors[5][2]});
         transform: translateZ(-90px);
       }
 
@@ -57,7 +62,8 @@ class Animation extends Component {
         height: 10%;
         border-radius: 100%;
         box-sizing: border-box;
-        box-shadow: 0 0 100px 4px rgb(${colors[4][0]},${colors[4][1]},${colors[4][2]});
+        background: rgba(${colors[4][0]},${colors[4][1]},${colors[4][2]}, 0.4)
+        box-shadow: 0 0 100px 10px rgb(${colors[4][0]},${colors[4][1]},${colors[4][2]});
         transform: translateZ(90px);
       }
 
@@ -82,6 +88,7 @@ class Animation extends Component {
 
       return(
         <div className ="animation-full">
+        <button onClick ={this.goBack} className="med-button back-button">Back to Home</button>
             <div className="haloCont">
                 <div className="spinner">
                     <HaloRing></HaloRing>

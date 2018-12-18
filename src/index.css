@@ -18,6 +18,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* background-image: url('./dark-paths.png') */
+  background: linear-gradient(270deg, #b7d4e8, #babec1, #222222);
+  background-size: 600% 600%;
+  animation: gradientShift 30s ease infinite;
+}
+
+@keyframes gradientShift { 
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 
 code {
@@ -25,7 +34,7 @@ code {
     monospace;
 }
 
-#single-paint {
+.single-paint {
   max-height: 80%;
   max-width: 80%;
   border-radius: 20px;
@@ -74,13 +83,32 @@ input {
   background-color: rgb(221, 212, 255); 
 }
 
+.back-button {
+  margin-right: 80%;
+  margin-top: 2%;
+}
+
+.fade-in {
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 1s;
+}
+
+#backVid {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+}
+
 /* animation styling */
 
-.animation-full {
-  background-color: #222;
-  height: 600px;
 
-}
+
+
 /* halo animation */
 .haloCont {
   position: absolute;
@@ -155,4 +183,13 @@ input {
   100% {
       perspective: 100px;
   }
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
