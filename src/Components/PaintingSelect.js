@@ -18,9 +18,9 @@ class PaintingSelect extends Component {
 
     state = {
         img_url: "",
-        singleView: true,
-        paintsSeen: [0],
-        currentPaint: 0
+        singleView: true
+        // paintsSeen: [0],
+        // currentPaint: 0
     }
 
     changeHandler = (e) => {
@@ -48,19 +48,19 @@ class PaintingSelect extends Component {
             })
     }
 
-    randomNum = (array) => {
-        let index = 0
-        while(this.state.paintsSeen.includes(index)) {
-            index = Math.floor(Math.random()*array.length)
-        }
+    // randomNum = (array) => {
+    //     let index = 0
+    //     while(this.state.paintsSeen.includes(index)) {
+    //         index = Math.floor(Math.random()*array.length)
+    //     }
         
-        this.setState({
-            paintsSeen: [...this.state.paintsSeen, index],
-            currentPaint: index 
-        })
+    //     this.setState({
+    //         paintsSeen: [...this.state.paintsSeen, index],
+    //         currentPaint: index 
+    //     })
      
-        return index 
-    }
+    //     return index 
+    // }
 
     render() {
         const { error, loading, paintings } = this.props //come back to this to add loading and error
@@ -82,9 +82,9 @@ class PaintingSelect extends Component {
                 <input type= "submit" value="Submit"/>
             </form>
            {this.state.singleView && paintings.length > 1 ? 
-           <div><SinglePaint img={paintings[this.state.currentPaint]}/>
-           <button onClick={() => this.randomNum(paintings)} className="med-button">Another One</button> </div>: 
-           <PaintList/>}
+            <SinglePaint />
+            :<PaintList/>
+           }
 
         </div>
     );

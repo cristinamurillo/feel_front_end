@@ -64,6 +64,12 @@ code {
 
 }
 
+#anotha {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 1.5em;
+}
+
 .section {
   padding: 3rem 1.5rem;
   display: block;
@@ -216,7 +222,6 @@ input:checked + .slider:before {
 .listed-paint:hover{
   box-shadow: 0 0 20px 6px rgb(0, 0, 0);
   transform: translateY(-3px);
-
 }
 
 
