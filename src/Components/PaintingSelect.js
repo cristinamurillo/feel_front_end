@@ -25,7 +25,6 @@ class PaintingSelect extends Component {
         })
     }
     
-
     submitURLHandler = (e) => {
         e.preventDefault()
         console.log("submit hit")
@@ -56,7 +55,10 @@ class PaintingSelect extends Component {
 
     render() {
         const { error, loading, paintings } = this.props //come back to this to add loading and error
-    return (
+        if(error){
+            return <div>{error.message}</div>
+        }
+        return (
         <div className="section">
         <h3 className="header">Choose an Artwork</h3>
             <form onSubmit={this.submitURLHandler}>

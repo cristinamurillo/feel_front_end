@@ -5,21 +5,22 @@ import {withRouter, Redirect, Link} from 'react-router-dom'
 
 class Animation extends Component {
 
-    state = {
-        toHome: false
-    }
-
     goBack = () => {
         this.props.history.replace('/')
     }
 
   render(){
-    // if (this.state.toHome === true) {
-    //     return <Redirect to='/' />
-    //   }
-
       if(this.props.loading === true){
           return <div>Extracting colors</div>
+      } else if(this.props.error) {
+          return (
+            <div>
+                <button onClick={this.goBack} type ="button" className="med-button back-button">
+                Back to Home
+                </button>
+                <div>Image invalid for color analysis, please try a different URL </div> 
+            </div>
+          ) 
       } else {
         let colors = this.props.colors 
 
@@ -98,7 +99,6 @@ class Animation extends Component {
 
 
         return(
-
             <div className ="animation-full">
                 <button onClick={this.goBack} type ="button" className="med-button back-button">
                 Back to Home
@@ -127,7 +127,8 @@ class Animation extends Component {
 
 const mapStateToProps = state => ({
     colors: state.animations.colors,
-    loading: state.animations.loading
+    loading: state.animations.loading,
+    error: state.animations.error 
 })
 
 const connectedAnimation = connect(mapStateToProps)(Animation)
