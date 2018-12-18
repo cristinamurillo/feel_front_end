@@ -15,7 +15,7 @@ h1 {
 #subtitle {
   margin-top: 0;
   margin-bottom: 10em;
-  font-size: 1.5em;
+  
 }
 
 body {
@@ -64,6 +64,12 @@ code {
 
 }
 
+#anotha {
+  display: flex;
+  margin: 0 auto;
+  margin-top: 1.5em;
+}
+
 .section {
   padding: 3rem 1.5rem;
   display: block;
@@ -76,6 +82,7 @@ code {
 
 .header {
   opacity: .85;
+  font-size: 1.5em;
 }
 
 #img-url {
@@ -125,6 +132,97 @@ input {
   animation-duration: 2.8s;
 }
 
+/* toggle slider */
+p {
+  margin: 0px;
+  margin-right: .5em;
+  padding-top: 1px;
+  font-family: ikaros;
+}
+#toggle {
+  display: flex;
+  align-items: flex-start;
+  margin: 0px;
+}
+.switch {
+  position: relative;
+  display: block;
+  width: 52px;
+  height: 22px;
+  float: left;
+}
+form {
+  display: flex;
+  justify-content: center; 
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 24px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: rgb(124, 182, 230);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(20px);
+}
+
+
+/* paintings container */
+
+.paint-list{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  flex-direction: row;
+  
+}
+
+.listed-paint {
+  max-height: 300px;
+  margin-top: 2em;
+  border-radius: 20px;
+  box-shadow: 0 0 20px 2px rgb(0, 0, 0);
+  transition: all .5s;
+}
+
+.listed-paint:hover{
+  box-shadow: 0 0 20px 6px rgb(0, 0, 0);
+  transform: translateY(-3px);
+}
 
 
 /* animation styling */

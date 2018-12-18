@@ -4,6 +4,7 @@ import {withRouter} from 'react-router-dom'
 import {fetchPaintings} from '../redux/paintingActions'
 import {fetchColors} from '../redux/animationActions'
 import SinglePaint from './SinglePaint'
+import PaintList from './PaintList'
 import axios from 'axios'
 
 
@@ -17,14 +18,21 @@ class PaintingSelect extends Component {
 
     state = {
         img_url: "",
-        singleView: true,
-        paintsSeen: [0],
-        currentPaint: 0
+        singleView: true
+        // paintsSeen: [0],
+        // currentPaint: 0
     }
 
     changeHandler = (e) => {
         this.setState({
             [e.target.name]: e.target.value
+        })
+    }
+    
+    handleCheckChange = event => {
+        console.log(this.state.singleView)
+        this.setState({
+            singleView: !this.state.singleView
         })
     }
     
@@ -40,19 +48,19 @@ class PaintingSelect extends Component {
             })
     }
 
-    randomNum = (array) => {
-        let index = 0
-        while(this.state.paintsSeen.includes(index)) {
-            index = Math.floor(Math.random()*array.length)
-        }
+    // randomNum = (array) => {
+    //     let index = 0
+    //     while(this.state.paintsSeen.includes(index)) {
+    //         index = Math.floor(Math.random()*array.length)
+    //     }
         
-        this.setState({
-            paintsSeen: [...this.state.paintsSeen, index],
-            currentPaint: index 
-        })
+    //     this.setState({
+    //         paintsSeen: [...this.state.paintsSeen, index],
+    //         currentPaint: index 
+    //     })
      
-        return index 
-    }
+    //     return index 
+    // }
 
     render() {
         const { error, loading, paintings } = this.props //come back to this to add loading and error
@@ -62,14 +70,21 @@ class PaintingSelect extends Component {
         return (
         <div className="section">
         <h3 className="header">Choose an Artwork</h3>
+            <div id="toggle">
+            <p>Toggle View</p>
+            <label class="switch">
+                <input type="checkbox" onChange={this.handleCheckChange} checked={this.state.singleView}/>
+                <span class="slider"/>
+            </label>
+            </div>
             <form onSubmit={this.submitURLHandler}>
                 <input id="img-url" type="text" name="img_url" placeholder="Image URL" value={this.state.img_url} onChange ={this.changeHandler}/>
                 <input type= "submit" value="Submit"/>
             </form>
-
-            {paintings.length > 0 && <SinglePaint img={paintings[this.state.currentPaint]}/>}
-            <button onClick={() => this.randomNum(paintings)} className="med-button">Another One</button>
-            {/* {paintings.map(painting => console.log(painting))} */}
+           {this.state.singleView && paintings.length > 1 ? 
+            <SinglePaint />
+            :<PaintList/>
+           }
 
         </div>
     );
@@ -80,7 +95,7 @@ const mapStateToProps = state => ({
     paintings: state.paintings.paintings,
     error: state.paintings.error,
     colors: state.animations.colors,
-    loading: state.animations.loading 
+    loading: state.animations.loading //do i need these last two?
 })
 
 const connectedPaintingSelect = connect(mapStateToProps)(PaintingSelect)
