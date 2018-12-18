@@ -2,14 +2,17 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import styled from 'styled-components'
 
-
 class Animation extends Component {
 
     goBack = () => {
         console.log("go back")
+
     }
 
   render(){
+      if(this.props.loading === true){
+          return <div>Extracting colors</div>
+      } else {
       let colors = this.props.colors 
       console.log("hi")
       console.log(colors)
@@ -88,7 +91,9 @@ class Animation extends Component {
 
       return(
         <div className ="animation-full">
-        <button onClick ={this.goBack} className="med-button back-button">Back to Home</button>
+        <button onClick={this.goBack} type ="button" className="med-button back-button">
+            Back to Home
+        </button>
             <div className="haloCont">
                 <div className="spinner">
                     <HaloRing></HaloRing>
@@ -108,11 +113,12 @@ class Animation extends Component {
       )
   }
 
-
+  }
 }
 
 const mapStateToProps = state => ({
-    colors: state.animations.colors
+    colors: state.animations.colors,
+    loading: state.animations.loading
 })
 
 export default connect(mapStateToProps)(Animation);
