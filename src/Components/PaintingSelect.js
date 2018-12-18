@@ -4,6 +4,7 @@ import {withRouter} from 'react-router-dom'
 import {fetchPaintings} from '../redux/paintingActions'
 import {fetchColors} from '../redux/animationActions'
 import SinglePaint from './SinglePaint'
+import PaintList from './PaintList'
 import axios from 'axios'
 
 
@@ -74,9 +75,10 @@ class PaintingSelect extends Component {
                 <input type= "submit" value="Submit"/>
             </form>
            
-            {paintings.length > 0 && <SinglePaint img={paintings[this.state.currentPaint]}/>}
-            <button onClick={() => this.randomNum(paintings)} className="med-button">Another One</button>
-            {/* {paintings.map(painting => console.log(painting))} */}
+           <PaintList />
+            {/* {paintings.length > 0 && <SinglePaint img={paintings[this.state.currentPaint]}/>} */}
+            {/* <button onClick={() => this.randomNum(paintings)} className="med-button">Another One</button> */}
+           
 
         </div>
     );
@@ -87,7 +89,7 @@ const mapStateToProps = state => ({
     paintings: state.paintings.paintings,
     error: state.paintings.error,
     colors: state.animations.colors,
-    loading: state.animations.loading 
+    loading: state.animations.loading //do i need these last two?
 })
 
 const connectedPaintingSelect = connect(mapStateToProps)(PaintingSelect)
