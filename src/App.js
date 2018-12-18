@@ -1,34 +1,25 @@
 import React, { Component } from 'react';
 import './App.css';
-import PaintingSelect from './Components/PaintingSelect'
 import Animation from './Components/Animation'
 import {connect} from 'react-redux'
-import video from './fog.mp4'
+import {Route, Switch, withRouter} from 'react-router-dom'
+import Landing from './Components/Landing'
+
 
 class App extends Component {
   render() {
-
+    console.log(this.props)
     return (
       <div className="App">
-      {/* <video autoPlay muted loop id="backVid">
-        <source src={video} type="video/mp4"/>
-      </video> */}
-        {this.props.colors.length === 0 ? 
-        <div>
-        <h1 className="fade-in">MOOD INDIGO</h1>
-        <PaintingSelect /></div>:
-        <div className="fade-in">
-        <Animation/>
-        </div>
-        }
+        <Switch>
+          <Route exact path ="/animation" component={Animation}/>
+          <Route path="/" component={Landing}/>
+        </Switch>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  colors: state.animations.colors
-})
 
 
-export default connect(mapStateToProps)(App);
+export default withRouter(App);
