@@ -8,11 +8,12 @@ class SinglePaint extends Component {
 
     state = {
         paintsSeen: [0],
-        currentPaint: 0
+        currentPaint: 17
     }
   
     clickHandler = () => {
-        this.props.dispatch(fetchColors(this.props.img.id))
+        let img = this.props.paintings[this.state.currentPaint]
+        this.props.dispatch(fetchColors(img.id))
         this.props.history.push('/animation')
     }
 
@@ -32,11 +33,12 @@ class SinglePaint extends Component {
    
     render() {
         console.log(this.props)
+        console.log(this.state.currentPaint)
         let img = this.props.paintings[this.state.currentPaint]
         let url = img.attributes["img-url"]
     return (
         <div className="section">
-            <img onClick={this.clickHandler} className="single-paint" data-reactid={img.id} src={url} alt="Painting"/>
+            <img onClick={this.clickHandler} className="single-paint" data-id={img.id} src={url} alt="Painting"/>
             <button onClick={() => this.randomNum(this.props.paintings)} className="med-button" id="anotha">Another One</button>
         </div>
     );
