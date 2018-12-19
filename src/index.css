@@ -143,6 +143,7 @@ p {
   display: flex;
   align-items: flex-start;
   margin: 0px;
+  margin-left: 2em;
 }
 .switch {
   position: relative;
