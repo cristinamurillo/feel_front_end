@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import styled from 'styled-components'
-import {withRouter, Redirect, Link} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
+import smoke from '../smoke.jpg'
 
 class Animation extends Component {
 
@@ -10,8 +11,12 @@ class Animation extends Component {
     }
 
   render(){
+    document.body.style =`
+    background: whitesmoke;
+    `
+ 
       if(this.props.loading === true){
-          return <div>Extracting colors</div>
+          return <div><p className="centered">Extracting colors</p></div>
       } else if(this.props.error) {
           return (
             <div>
@@ -24,7 +29,6 @@ class Animation extends Component {
       } else {
         let colors = this.props.colors 
 
-        console.log(colors)
         let HaloRing = styled.div`
             width: 200px;
             height: 200px;
@@ -123,7 +127,23 @@ class Animation extends Component {
     }
 
   }
+
+  componentWillUnmount() {
+    document.body.style =`
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: linear-gradient(270deg, rgb(39, 9, 59), #babec1, #222222);
+    background-size: 600% 600%;
+    animation: gradientShift 30s ease infinite;`
+  }
 }
+
+
 
 const mapStateToProps = state => ({
     colors: state.animations.colors,
