@@ -9,6 +9,7 @@ class Landing extends Component {
             <div className="section">
                 <h1 className="fade-in">MOOD INDIGO</h1>
                 <h3 className="header fade-in slower" id="subtitle">abstractly visualize your vibe</h3>
+                <hr></hr>
                 <PaintingSelect />
             </div>
         );

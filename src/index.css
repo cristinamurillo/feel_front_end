@@ -251,7 +251,10 @@ input:checked + .slider:before {
 	from { transform: rotate(0deg); }
 	to { transform: rotate(360deg); }
 }
-
+hr {
+  border-top: 1px solid whitesmoke; 
+  width: 85%;
+}
 /* inner circles animation */
 .view {
   position: absolute;
@@ -261,7 +264,7 @@ input:checked + .slider:before {
   bottom: 0;
   perspective: 100px;
   pointer-events:none;
-  animation: perspect 10s infinite linear;
+  animation: perspect 5s infinite linear;
 }
 
 .plane {
