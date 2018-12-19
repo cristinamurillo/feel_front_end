@@ -23,7 +23,7 @@ class Animation extends Component {
                 <button onClick={this.goBack} type ="button" className="med-button back-button">
                 Back to Home
                 </button>
-                <div>Image invalid for color analysis, please try a different URL </div> 
+                <div><p className="centered">Image invalid for color analysis, please try a different URL</p></div> 
             </div>
           ) 
       } else {
