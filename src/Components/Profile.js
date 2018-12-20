@@ -5,6 +5,14 @@ import axios from 'axios'
 class Profile extends Component {
 
 
+    componentDidMount(){
+        axios.get('http://localhost:3000/api/v1/users', {
+            headers: {'Authorization': `Bearer: ${localStorage.getItem('token')}`}
+        }).then(response => {
+            console.log(response)
+        })
+    }
+
     render(){
         if(localStorage.getItem('user')) {
             return(
