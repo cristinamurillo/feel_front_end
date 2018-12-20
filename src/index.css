@@ -55,6 +55,12 @@ code {
     monospace;
 }
 
+.top-nav {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 2em;
+}
+
 .single-paint {
   max-height: 600px;
   max-width: 100%;
@@ -110,6 +116,7 @@ input {
   cursor: pointer;
   background: transparent;
   box-shadow: 0 0 2px grey;
+  margin: 0 .5em;
   transition: all .5s;
 }
 

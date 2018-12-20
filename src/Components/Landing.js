@@ -29,8 +29,11 @@ class Landing extends Component {
         return (
             <div className="section">
                 {localStorage.getItem('token') ? 
-                <button onClick={this.signOut} className="med-button">Log Out</button>:
-                <div>
+                <div className="top-nav">
+                    <button onClick={this.signOut} className="med-button">Profile</button>
+                    <button onClick={this.signOut} className="med-button">Log Out</button>
+                </div>:
+                <div className="top-nav">
                     <button onClick={this.goToSignUp} className="med-button">Sign Up</button>
                     <button onClick={this.goToLogIn} className="med-button">Log In</button>
                 </div>
