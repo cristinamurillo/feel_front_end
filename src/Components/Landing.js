@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PaintingSelect from './PaintingSelect'
 import {withRouter} from 'react-router-dom'
-import axios from 'axios'
+
 
 class Landing extends Component {
 
@@ -25,12 +25,16 @@ class Landing extends Component {
         })
     }
 
+    goToProfile = () => {
+        this.props.history.push('/profile')
+    }
+
     render() {
         return (
             <div className="section">
                 {localStorage.getItem('token') ? 
                 <div className="top-nav">
-                    <button onClick={this.signOut} className="med-button">Profile</button>
+                    <button onClick={this.goToProfile} className="med-button">Profile</button>
                     <button onClick={this.signOut} className="med-button">Log Out</button>
                 </div>:
                 <div className="top-nav">
