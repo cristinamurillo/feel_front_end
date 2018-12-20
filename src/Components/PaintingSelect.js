@@ -41,26 +41,11 @@ class PaintingSelect extends Component {
         console.log("submit hit")
         axios.post(PAINTINGS_URL, {img_url: this.state.img_url})
             .then(response => {
-                console.log(response)
                 let painting = response.data.data
                 this.props.dispatch(fetchColors(painting.id))
                 this.props.history.push('/animation')
             })
     }
-
-    // randomNum = (array) => {
-    //     let index = 0
-    //     while(this.state.paintsSeen.includes(index)) {
-    //         index = Math.floor(Math.random()*array.length)
-    //     }
-        
-    //     this.setState({
-    //         paintsSeen: [...this.state.paintsSeen, index],
-    //         currentPaint: index 
-    //     })
-     
-    //     return index 
-    // }
 
     render() {
         const { error, loading, paintings } = this.props //come back to this to add loading and error

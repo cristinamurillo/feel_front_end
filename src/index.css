@@ -65,6 +65,7 @@ code {
 
 .single-paint:hover{
   box-shadow: 0 0 20px 6px rgb(0, 0, 0);
+  cursor: pointer;
   /* transform: translateY(-2px); */
 
 }
@@ -228,6 +229,7 @@ input:checked + .slider:before {
 .listed-paint:hover{
   box-shadow: 0 0 20px 6px rgb(0, 0, 0);
   transform: translateY(-3px);
+  cursor: pointer; 
 }
 
 
