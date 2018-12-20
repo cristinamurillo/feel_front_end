@@ -5,14 +5,10 @@ import axios from 'axios'
 
 class Landing extends Component {
 
-    // componentDidMount(){
-    //     axios.post('http://localhost:3000/api/v1/users', {first_name: "chris", password: "chris"})
-    //         .then(response => {
-    //             console.log("created user...")
-    //             console.log(response)
-    //         })
-    //         .catch(response => console.log(response))
-    // }
+    state = {
+        logStatus: true
+    }
+
     goToSignUp = () => {
         this.props.history.push('./signup')
     }
@@ -21,11 +17,24 @@ class Landing extends Component {
         this.props.history.push('./login')
     }
 
+    signOut = () => {
+        localStorage.removeItem('token')
+        localStorage.removeItem('user')
+        this.setState({
+            logStatus: !this.state.logStatus
+        })
+    }
+
     render() {
         return (
             <div className="section">
-                <button onClick={this.goToSignUp} className="med-button">Sign Up</button>
-                <button onClick={this.goToLogIn} className="med-button">Log In</button>
+                {localStorage.getItem('token') ? 
+                <button onClick={this.signOut} className="med-button">Log Out</button>:
+                <div>
+                    <button onClick={this.goToSignUp} className="med-button">Sign Up</button>
+                    <button onClick={this.goToLogIn} className="med-button">Log In</button>
+                </div>
+                }
                 <h1 className="fade-in">MOOD INDIGO</h1>
                 <h3 className="header fade-in slower" id="subtitle">abstractly visualize your vibe</h3>
                 <hr></hr>

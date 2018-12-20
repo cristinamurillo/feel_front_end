@@ -12,15 +12,15 @@ const PAINTINGS_URL = "http://localhost:3000/paintings/"
 
 class PaintingSelect extends Component {
 
-    componentDidMount() {
-        this.props.dispatch(fetchPaintings())
-    }
-
     state = {
         img_url: "",
         singleView: true
         // paintsSeen: [0],
         // currentPaint: 0
+    }
+
+    componentDidMount() {
+        this.props.dispatch(fetchPaintings())
     }
 
     changeHandler = (e) => {
@@ -30,7 +30,6 @@ class PaintingSelect extends Component {
     }
     
     handleCheckChange = event => {
-        console.log(this.state.singleView)
         this.setState({
             singleView: !this.state.singleView
         })
