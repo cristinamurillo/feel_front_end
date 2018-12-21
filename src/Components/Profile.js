@@ -6,7 +6,7 @@ class Profile extends Component {
 
 
     componentDidMount(){
-        axios.get('http://localhost:3000/api/v1/users', {
+        axios.get('http://localhost:3000/api/v1/profile', {
             headers: {'Authorization': `Bearer: ${localStorage.getItem('token')}`}
         }).then(response => {
             console.log(response)
