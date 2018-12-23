@@ -17,7 +17,7 @@ class Animation extends Component {
  
       if(this.props.loading === true){
           return <div><p className="centered">Extracting colors</p></div>
-      } else if(this.props.error) {
+      } else if(this.props.error || this.props.colors.length < 7) {
           return (
             <div>
                 <button onClick={this.goBack} type ="button" className="med-button back-button">
@@ -28,7 +28,8 @@ class Animation extends Component {
           ) 
       } else {
         let colors = this.props.colors 
-
+        console.log("LOOK HERE")
+        console.log(this.props)
         let HaloRing = styled.div`
             width: 200px;
             height: 200px;

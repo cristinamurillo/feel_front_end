@@ -8,7 +8,7 @@ class SinglePaint extends Component {
 
     state = {
         paintsSeen: [0],
-        currentPaint: 17
+        currentPaint: 0
     }
   
     clickHandler = () => {

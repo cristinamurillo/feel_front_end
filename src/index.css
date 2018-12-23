@@ -55,6 +55,12 @@ code {
     monospace;
 }
 
+.top-nav {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 2em;
+}
+
 .single-paint {
   max-height: 600px;
   max-width: 100%;
@@ -65,6 +71,7 @@ code {
 
 .single-paint:hover{
   box-shadow: 0 0 20px 6px rgb(0, 0, 0);
+  cursor: pointer;
   /* transform: translateY(-2px); */
 
 }
@@ -109,6 +116,7 @@ input {
   cursor: pointer;
   background: transparent;
   box-shadow: 0 0 2px grey;
+  margin: 0 .5em;
   transition: all .5s;
 }
 
@@ -228,6 +236,7 @@ input:checked + .slider:before {
 .listed-paint:hover{
   box-shadow: 0 0 20px 6px rgb(0, 0, 0);
   transform: translateY(-3px);
+  cursor: pointer; 
 }
 
 
