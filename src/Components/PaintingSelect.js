@@ -56,9 +56,9 @@ class PaintingSelect extends Component {
         <h3 className="header">Choose an Artwork</h3>
             <div id="toggle">
             <p>Toggle View</p>
-            <label class="switch">
+            <label className="switch">
                 <input type="checkbox" onChange={this.handleCheckChange} checked={this.state.singleView}/>
-                <span class="slider"/>
+                <span className="slider"/>
             </label>
             </div>
             <form onSubmit={this.submitURLHandler}>

@@ -112,6 +112,11 @@ code {
 input {
   padding: .6em;
   border-radius: 4px;
+  margin: 0 .4em;
+}
+
+#signup{
+  display: block; 
 }
 
 .med-button {
