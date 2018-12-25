@@ -37,7 +37,7 @@ body {
   100%{background-position:0% 50%}
 }
 
-h2, h3, h6, p {
+h2, h3, h6, h5, p {
   font-family: ikaros;
 }
 
@@ -49,6 +49,11 @@ button, input {
   margin-top: 5em;
   font-size: 2em;
 }
+
+.error {
+  color: darkred;
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
@@ -107,6 +112,11 @@ code {
 input {
   padding: .6em;
   border-radius: 4px;
+  margin: 0 .4em;
+}
+
+#signup{
+  display: block; 
 }
 
 .med-button {

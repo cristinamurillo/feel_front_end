@@ -32,8 +32,7 @@ class SinglePaint extends Component {
     }
    
     render() {
-        console.log(this.props)
-        console.log(this.state.currentPaint)
+        
         let img = this.props.paintings[this.state.currentPaint]
         let url = img.attributes["img-url"]
     return (

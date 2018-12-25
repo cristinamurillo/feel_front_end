@@ -14,7 +14,7 @@ class Profile extends Component {
     }
 
     render(){
-        if(localStorage.getItem('user')) {
+        if(localStorage.getItem('token')) {
             return(
                 <p>it's profile baby</p>
             )

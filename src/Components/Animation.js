@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import styled from 'styled-components'
 import {withRouter} from 'react-router-dom'
-import smoke from '../smoke.jpg'
+
 
 class Animation extends Component {
 
