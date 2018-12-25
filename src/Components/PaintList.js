@@ -12,9 +12,7 @@ class PaintList extends Component {
     }
 
     render(){
-        console.log(this.props)
         let paintings = this.props.paintings
-        console.log(paintings[0])
             return (
                 <div className="paint-list fade-in">
                      {paintings.map(painting => {

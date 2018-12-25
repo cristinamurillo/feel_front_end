@@ -9,7 +9,9 @@ class SignUp extends Component {
         last_name: "",
         email: "",
         password: "",
-        confirm_password: ""
+        confirm_password: "",
+        invalid_pass: false,
+        errors: {}
     }
 
     changeHandler = (e) => {
@@ -20,6 +22,15 @@ class SignUp extends Component {
 
     submitHandler = (e) => {
         e.preventDefault()
+
+        if(this.state.confirm_password !== this.state.password) {
+            return this.setState({
+                invalid_pass: true
+            }, () => {
+                console.log("no password match")
+                return null 
+            })
+        }
         console.log("sign up sent")
         axios.post('http://localhost:3000/api/v1/users', this.state)
             .then(response => {
@@ -28,14 +39,27 @@ class SignUp extends Component {
                 this.props.history.push('/')
             })
             .catch(error => {
-                console.log(error)
+                this.setState({
+                    errors: error.response.data.errors
+                }) 
             })
     }
 
+    errors = () => {
+        let errors =[]
+        for(let field in this.state.errors){
+            errors.push(<p className="error">{field} {this.state.errors[field]}</p>)
+        }
+        return errors
+    }
+
     render(){
+
         return(
             <div className="section">
                 <h3>Sign Up</h3>
+                {this.state.invalid_pass && <p className="error">Passwords do not match</p>}
+                {Object.keys(this.state.errors).length > 0 && this.errors()}
                 <form onSubmit={this.submitHandler} id="signup">
                     <input type="text" name="first_name" placeholder="First name" value={this.state.first_name} onChange={this.changeHandler}/>
                     <input type="text" name="last_name" placeholder="Last name" value={this.state.last_name} onChange={this.changeHandler}/>
