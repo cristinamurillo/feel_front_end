@@ -115,6 +115,8 @@ input {
   margin: 0 .4em;
 }
 
+
+
 #signup{
   display: block; 
 }
@@ -131,6 +133,21 @@ input {
 }
 
 .med-button:hover {
+  background-color: rgba(255, 255, 255, 0.4); 
+  border-color: rgb(218, 218, 218);
+}
+
+.large-button{
+  padding: .7em;
+  border-radius: 4px;
+  font-size: 1.5em;
+  cursor: pointer;
+  background: transparent;
+  box-shadow: 0 0 .5em grey;
+  margin: 0 .5em;
+  transition: all .5s;
+}
+.large-button:hover {
   background-color: rgba(255, 255, 255, 0.4); 
   border-color: rgb(218, 218, 218);
 }
@@ -154,6 +171,27 @@ input {
 .slower {
   animation-duration: 2.8s;
 }
+/* profile */
+.spaced {
+  letter-spacing: .2em;
+  text-shadow: 0 0 0.8em white;
+  font-size: 3em;
+}
+
+#prof-upper {
+  background-image: url("pink-blue-smoke.jpg");
+  background-size: cover;
+  height: 100vh;
+}
+
+/* #back-gradient {
+  background: linear-gradient(270deg, white, purple, white);
+  animation: gradientShift 20s ease infinite;
+  height: 100vh;
+  background-size: 600% 600%;
+  opacity: .8;
+} */
+
 
 /* toggle slider */
 #toggle p {
