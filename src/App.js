@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Animation from './Components/Animation'
-import {connect} from 'react-redux'
 import {Route, Switch, withRouter} from 'react-router-dom'
 import Landing from './Components/Landing'
 import LoginPage from './Components/LoginPage';
