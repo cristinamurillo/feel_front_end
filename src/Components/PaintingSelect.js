@@ -14,7 +14,8 @@ class PaintingSelect extends Component {
 
     state = {
         img_url: "",
-        singleView: true
+        singleView: true,
+        errorMessage: null
         // paintsSeen: [0],
         // currentPaint: 0
     }
@@ -44,12 +45,24 @@ class PaintingSelect extends Component {
                 this.props.dispatch(fetchColors(painting.id))
                 this.props.history.push('/animation')
             })
+            .catch(error => {
+                console.log(error.response)
+                if(error.response.status === 500){
+                    this.setState({
+                        errorMessage: "Invalid url. Please try right-clicking on an image and selecting 'Copy Image Address'."
+                    })
+                } else {
+                    this.setState({
+                        errorMessage: error.response.data.message
+                    })
+                }
+            })
     }
 
     render() {
-        const { error, loading, paintings } = this.props //come back to this to add loading and error
+        const { error, paintings } = this.props //come back to this to add loading and error
         if(error){
-            return <div>{error.message}</div>
+            return <p className="error">{error.message}</p>
         }
         return (
         <div className="section">
@@ -65,6 +78,7 @@ class PaintingSelect extends Component {
                 <input id="img-url" type="text" name="img_url" placeholder="Image URL" value={this.state.img_url} onChange ={this.changeHandler}/>
                 <input type= "submit" value="Submit"/>
             </form>
+            {this.state.errorMessage && <p className="error">{this.state.errorMessage}</p>}
            {this.state.singleView && paintings.length > 1 ? 
             <SinglePaint />
             :<PaintList/>
@@ -77,9 +91,7 @@ class PaintingSelect extends Component {
 
 const mapStateToProps = state => ({
     paintings: state.paintings.paintings,
-    error: state.paintings.error,
-    colors: state.animations.colors,
-    loading: state.animations.loading //do i need these last two?
+    error: state.paintings.error
 })
 
 const connectedPaintingSelect = connect(mapStateToProps)(PaintingSelect)
