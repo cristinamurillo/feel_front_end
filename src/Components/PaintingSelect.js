@@ -14,7 +14,8 @@ class PaintingSelect extends Component {
 
     state = {
         img_url: "",
-        singleView: true
+        singleView: true,
+        errorMessage: null
         // paintsSeen: [0],
         // currentPaint: 0
     }
@@ -44,6 +45,11 @@ class PaintingSelect extends Component {
                 this.props.dispatch(fetchColors(painting.id))
                 this.props.history.push('/animation')
             })
+            .catch(error => {
+                this.setState({
+                    errorMessage: error.response.data.message
+                })
+            })
     }
 
     render() {
@@ -65,6 +71,7 @@ class PaintingSelect extends Component {
                 <input id="img-url" type="text" name="img_url" placeholder="Image URL" value={this.state.img_url} onChange ={this.changeHandler}/>
                 <input type= "submit" value="Submit"/>
             </form>
+            {this.state.errorMessage && <p className="error">{this.state.errorMessage}</p>}
            {this.state.singleView && paintings.length > 1 ? 
             <SinglePaint />
             :<PaintList/>
