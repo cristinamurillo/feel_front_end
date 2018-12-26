@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import {fetchColors} from '../redux/animationActions'
-import {postJoin} from '../redux/userActions'
+import {fetchCurrentUser, postJoin} from '../redux/userActions'
+
 
 
 class SinglePaint extends Component {
@@ -11,11 +12,15 @@ class SinglePaint extends Component {
         paintsSeen: [0],
         currentPaint: 0
     }
+
+    componentDidMount() {
+        this.props.dispatch(fetchCurrentUser(localStorage.getItem('token')))
+    }
   
     clickHandler = () => {
         let img = this.props.paintings[this.state.currentPaint]
         this.props.dispatch(fetchColors(img.id))
-        this.props.dispatch(postJoin(10, img.id))
+        this.props.dispatch(postJoin(this.props.user.id, img.id))
         this.props.history.push('/animation')
     }
 
@@ -47,7 +52,8 @@ class SinglePaint extends Component {
 }
 
 const mapStateToProps = state => ({
-    paintings: state.paintings.paintings
+    paintings: state.paintings.paintings,
+    user: state.users.currentUser
 })
 
 const connectedContainer = connect(mapStateToProps)(SinglePaint)
