@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import {fetchColors} from '../redux/animationActions'
+import {postJoin} from '../redux/userActions'
 
 
 class SinglePaint extends Component {
@@ -14,6 +15,7 @@ class SinglePaint extends Component {
     clickHandler = () => {
         let img = this.props.paintings[this.state.currentPaint]
         this.props.dispatch(fetchColors(img.id))
+        this.props.dispatch(postJoin(10, img.id))
         this.props.history.push('/animation')
     }
 

@@ -27,11 +27,9 @@ class SignUp extends Component {
             return this.setState({
                 invalid_pass: true
             }, () => {
-                console.log("no password match")
                 return null 
             })
         }
-        console.log("sign up sent")
         axios.post('http://localhost:3000/api/v1/users', this.state)
             .then(response => {
                 console.log(response)

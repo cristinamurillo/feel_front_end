@@ -18,7 +18,6 @@ class LoginPage extends Component {
 
     submitHandler = (e) => {
         e.preventDefault()
-        console.log("submitted")
         axios.post('http://localhost:3000/api/v1/login', this.state)
             .then(response => {
                 console.log(response)

@@ -16,8 +16,6 @@ class PaintingSelect extends Component {
         img_url: "",
         singleView: true,
         errorMessage: null
-        // paintsSeen: [0],
-        // currentPaint: 0
     }
 
     componentDidMount() {
