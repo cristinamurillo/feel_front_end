@@ -32,7 +32,6 @@ class SignUp extends Component {
         }
         axios.post('http://localhost:3000/api/v1/users', this.state)
             .then(response => {
-                console.log(response)
                 localStorage.setItem('token', response.data.jwt)
                 this.props.history.push('/')
             })
