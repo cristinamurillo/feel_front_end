@@ -36,9 +36,9 @@ class Profile extends Component {
             const user = this.props.user
             return(
                 <div>
-                    {/* <button onClick={this.goBack} type ="button" className="med-button back-button">
+                    <button onClick={this.goBack} type ="button" className="fade-in med-button back-button light">
                         Back to Home
-                    </button> */}
+                    </button>
                     <div className="section fade-in" id="prof-upper">
                         <h2 className="spaced">Welcome {user.first_name}</h2>
                         <br/><br/><br/><br/><br/><br/><br/>

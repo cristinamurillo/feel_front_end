@@ -10,7 +10,7 @@ class SinglePaint extends Component {
 
     state = {
         paintsSeen: [0],
-        currentPaint: 0
+        currentPaint: Math.floor(Math.random()*this.props.paintings.length)
     }
 
     componentDidMount() {
@@ -39,7 +39,6 @@ class SinglePaint extends Component {
     }
    
     render() {
-        
         let img = this.props.paintings[this.state.currentPaint]
         let url = img.attributes["img-url"]
     return (

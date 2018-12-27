@@ -152,11 +152,21 @@ input {
   border-color: rgb(218, 218, 218);
 }
 
+.light {
+  display: flex;
+  position: absolute;
+  background: gray;
+  margin-left: 2em;
+  box-shadow: 0 0 3px whitesmoke;
+}
+
+.light:hover{
+  background: rgba(255, 255, 255, 0.4);
+}
+
 .back-button {
   margin-right: 80%;
   margin-top: 2%;
-  background: transparent;
-  box-shadow: 0 0 3px grey;
   border: none;
 }
 
