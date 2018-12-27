@@ -3,6 +3,7 @@ import {connect} from "react-redux"
 import {withRouter} from 'react-router-dom'
 import {fetchPaintings} from '../redux/paintingActions'
 import {fetchColors} from '../redux/animationActions'
+import {fetchCurrentUser, postJoin} from '../redux/userActions'
 import SinglePaint from './SinglePaint'
 import PaintList from './PaintList'
 import axios from 'axios'
@@ -16,12 +17,11 @@ class PaintingSelect extends Component {
         img_url: "",
         singleView: true,
         errorMessage: null
-        // paintsSeen: [0],
-        // currentPaint: 0
     }
 
     componentDidMount() {
         this.props.dispatch(fetchPaintings())
+        this.props.dispatch(fetchCurrentUser(localStorage.getItem('token')))
     }
 
     changeHandler = (e) => {
@@ -43,6 +43,7 @@ class PaintingSelect extends Component {
             .then(response => {
                 let painting = response.data.data
                 this.props.dispatch(fetchColors(painting.id))
+                this.props.dispatch(postJoin(this.props.user.id, painting.id))
                 this.props.history.push('/animation')
             })
             .catch(error => {
@@ -91,7 +92,8 @@ class PaintingSelect extends Component {
 
 const mapStateToProps = state => ({
     paintings: state.paintings.paintings,
-    error: state.paintings.error
+    error: state.paintings.error,
+    user: state.users.currentUser
 })
 
 const connectedPaintingSelect = connect(mapStateToProps)(PaintingSelect)

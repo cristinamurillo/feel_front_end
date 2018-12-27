@@ -2,12 +2,19 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import {fetchColors} from '../redux/animationActions'
+import {fetchCurrentUser, postJoin} from '../redux/userActions'
 
 
 class PaintList extends Component {
 
+    componentDidMount() {
+        this.props.dispatch(fetchCurrentUser(localStorage.getItem('token')))
+    }
+
     clickHandler = (event) => {
-        this.props.dispatch(fetchColors(event.target.dataset.id))
+        let imgId =event.target.dataset.id
+        this.props.dispatch(fetchColors(imgId))
+        this.props.dispatch(postJoin(this.props.user.id, imgId))
         this.props.history.push('/animation')
     }
 
@@ -25,7 +32,8 @@ class PaintList extends Component {
 }
 
 const mapStateToProps = state =>({
-    paintings: state.paintings.paintings 
+    paintings: state.paintings.paintings,
+    user: state.users.currentUser 
 })
 
 const connectedPaintList = connect(mapStateToProps)(PaintList)
