@@ -12,7 +12,8 @@ class Animation extends Component {
 
   render(){
     document.body.style =`
-    background: whitesmoke;
+    background: linear-gradient(180deg, whitesmoke, #313131);
+    height: 100vh;
     `
  
       if(this.props.loading === true){
