@@ -7,7 +7,7 @@ import {
 const initialState = {
     joinSuccess: "",
     joinError: null,
-    currentUser: null
+    currentUser: 0
 }
 
 const userActions = (state = initialState, action) => {
