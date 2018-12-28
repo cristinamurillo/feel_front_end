@@ -29,15 +29,15 @@ class Animation extends Component {
             </div>
           ) 
       } else {
-        let colors = this.props.colors 
+        let painting = this.props.colors.data.attributes 
         console.log("LOOK HERE")
         console.log(this.props)
         let HaloRing = styled.div`
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            box-shadow: 0px 0px 100px 50px rgb(${colors[0][0]},${colors[0][1]},${colors[0][2]}), 
-                        inset 0 0 60px 20px rgb(${colors[7][0]},${colors[7][1]},${colors[7][2]});
+            box-shadow: 0px 0px 100px 50px ${painting.color1}, 
+                        inset 0 0 60px 20px ${painting.color7};
         `;
 
         let InnerCircle = styled.div`
@@ -47,8 +47,8 @@ class Animation extends Component {
         transform-style: preserve-3d;
         border-radius: 100%;
         box-sizing: border-box;
-        box-shadow: 0px 5px 70px 10px rgb(${colors[2][0]},${colors[2][1]},${colors[2][2]}), 
-                    inset 0 0 40px rgb(${colors[3][0]},${colors[3][1]},${colors[3][2]});
+        box-shadow: 0px 5px 70px 10px ${painting.color3}, 
+                    inset 0 0 40px ${painting.color4};
 
         ::before {
             content: "";
@@ -63,8 +63,8 @@ class Animation extends Component {
             height: 10%;
             border-radius: 100%;
             box-sizing: border-box;
-            background: rgba(${colors[5][0]},${colors[5][1]},${colors[5][2]}, 0.4)
-            box-shadow: 0 0 100px 10px rgb(${colors[5][0]},${colors[5][1]},${colors[5][2]});
+            background: ${painting.color6}
+            box-shadow: 0 0 100px 10px ${painting.color6};
             transform: translateZ(-90px);
         }
 
@@ -81,8 +81,8 @@ class Animation extends Component {
             height: 10%;
             border-radius: 100%;
             box-sizing: border-box;
-            background: rgba(${colors[4][0]},${colors[4][1]},${colors[4][2]}, 0.4)
-            box-shadow: 0 0 100px 10px rgb(${colors[4][0]},${colors[4][1]},${colors[4][2]});
+            background: ${painting.color5}
+            box-shadow: 0 0 100px 10px ${painting.color5};
             transform: translateZ(90px);
         }
 

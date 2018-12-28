@@ -23,7 +23,7 @@ export const fetchColorsFailure = (error) => ({
 export const fetchColors = (id) => {
     return dispatch => {
         dispatch(fetchColorsBegin())
-        return axios.get(`http://localhost:3000/paintings/${id}/colors`)
+        return axios.get(`http://localhost:3000/paintings/${id}/`)
             .then(response => {
                 let colors = response.data
                 dispatch(fetchColorsSuccess(colors))
