@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom';
-import {fetchCurrentUser} from '../redux/userActions'
 import HorizontalTimeline from 'react-horizontal-timeline'
 import TimelineAnimation from './TimelineAnimation'
+import axios from 'axios';
 
 class TimelineCont extends Component {
 
     state = { 
         value: 0, 
-        previous: 0 
+        previous: 0,
+        user_paintings: null 
     }
 
     goBack = () => {
@@ -24,19 +24,30 @@ class TimelineCont extends Component {
     }
 
     componentDidMount(){
-        this.props.dispatch(fetchCurrentUser(localStorage.getItem('token')))
+        axios.get('http://localhost:3000/api/v1/timeline', {
+            headers: {'Authorization': `Bearer: ${localStorage.getItem('token')}`}})
+            .then(data => {
+                this.setState({
+                    user_paintings: data
+                })  
+            })
+            .catch(error => {
+                this.setState({
+                    user_paintings: error
+                }) 
+            })
     }
 
     render() {
-        if(this.props.user) {
-            const paintings = this.props.user.paintings
+        if(this.state.user_paintings) {
+            const paintings = this.state.user_paintings
             console.log(paintings)
         return (
             <div className="fade-in">
             <button onClick={this.goBack} type ="button" className="fade-in med-button back-button light">
                         Back to Home
                     </button>
-                <h2 class="header bigger">Timeline</h2>
+                <h2 className="header bigger">Timeline</h2>
                 {/* Bounding box for the Timeline */}
                 <div style={{ width: '60%', height: '100px', margin: '0 auto' }}>
                 <HorizontalTimeline
@@ -58,11 +69,11 @@ class TimelineCont extends Component {
 }
 
 
-const mapStateToProps = state => ({
-    user: state.users.currentUser
-})
+// const mapStateToProps = state => ({
+//     user: state.users.currentUser
+// })
 
-const connectedTimelineCont = connect(mapStateToProps)(TimelineCont)
-const routedTimeLineCont = withRouter(connectedTimelineCont)
+// const connectedTimelineCont = connect(mapStateToProps)(TimelineCont)
+// const routedTimeLineCont = withRouter(connectedTimelineCont)
 
-export default routedTimeLineCont;
+export default withRouter(TimelineCont);
