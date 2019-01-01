@@ -140,9 +140,9 @@ class Animation extends Component {
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: linear-gradient(270deg, rgb(39, 9, 59), #babec1, #222222);
+    background: linear-gradient(270deg, #ccc, #babec1, #222222);
     background-size: 600% 600%;
-    animation: gradientShift 30s ease infinite;`
+    animation: gradientShift 30s ease infinite`
   }
 }
 
