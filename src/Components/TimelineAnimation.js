@@ -12,12 +12,14 @@ class TimelineAnimation extends Component {
         // let colors = this.props.colors 
         // console.log("LOOK HERE")
         // console.log(this.props)
+        const painting = this.props.painting.painting
+        console.log(painting)
         let HaloRing = styled.div`
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            box-shadow: 0px 0px 100px 50px lightblue, 
-                        inset 0 0 60px 20px white;
+            box-shadow: 0px 0px 100px 50px ${painting.color1}, 
+                        inset 0 0 60px 20px ${painting.color7};
         `;
 
         let InnerCircle = styled.div`
@@ -27,8 +29,8 @@ class TimelineAnimation extends Component {
         transform-style: preserve-3d;
         border-radius: 100%;
         box-sizing: border-box;
-        box-shadow: 0px 5px 70px 10px cyan, 
-                    inset 0 0 40px cyan;
+        box-shadow: 0px 5px 70px 10px ${painting.color3}, 
+                    inset 0 0 40px ${painting.color4};
 
         ::before {
             content: "";
@@ -43,8 +45,8 @@ class TimelineAnimation extends Component {
             height: 10%;
             border-radius: 100%;
             box-sizing: border-box;
-            background: cyan
-            box-shadow: 0 0 100px 10px cyan;
+            background: ${painting.color6}
+            box-shadow: 0 0 100px 10px ${painting.color6};
             transform: translateZ(-90px);
         }
 
@@ -61,8 +63,8 @@ class TimelineAnimation extends Component {
             height: 10%;
             border-radius: 100%;
             box-sizing: border-box;
-            background: white
-            box-shadow: 0 0 100px 10px white;
+            background: ${painting.color5}
+            box-shadow: 0 0 100px 10px ${painting.color5};
             transform: translateZ(90px);
         }
 
@@ -82,7 +84,6 @@ class TimelineAnimation extends Component {
             transform: rotateZ(288deg) rotateX(63.435deg);
         }
         `;
-
         return (
             <div className ="animation-full fade-in">
             <div className="haloCont">

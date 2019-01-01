@@ -10,7 +10,8 @@ class TimelineCont extends Component {
         value: 0, 
         previous: 0,
         user_paintings: null,
-        dates: []
+        dates: [],
+        selectedPainting: {}
     }
 
     goBack = () => {
@@ -30,9 +31,11 @@ class TimelineCont extends Component {
     }
 
     handleTimelineClick = (index) => {
+        console.log(index)
         this.setState({ 
             value: index, 
-            previous: this.state.value 
+            previous: this.state.value,
+            selectedPainting: this.state.user_paintings[index]
         })
     }
 
@@ -41,7 +44,8 @@ class TimelineCont extends Component {
             headers: {'Authorization': `Bearer: ${localStorage.getItem('token')}`}})
             .then(res => {
                 this.setState({
-                    user_paintings: res.data
+                    user_paintings: res.data,
+                    selectedPainting: res.data[0]
                 }, () => this.createTimelineDates())  
             })
             .catch(error => {
@@ -71,7 +75,7 @@ class TimelineCont extends Component {
                 </div>
                 <div className='text-center'>
                 {/* any arbitrary component can go here */}    
-                <TimelineAnimation />
+                <TimelineAnimation painting={this.state.selectedPainting}/>
                 </div>
             </div>
         );
