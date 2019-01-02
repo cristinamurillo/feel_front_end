@@ -91,8 +91,8 @@ class LoginPage extends Component {
 
         return(
             <React.Fragment>
-                <HaloRing></HaloRing>
-                <HaloRingTwo></HaloRingTwo>
+                {/* <HaloRing></HaloRing>
+                <HaloRingTwo></HaloRingTwo> */}
                 <button onClick={this.goBack} type ="button" className="med-button back-button">
                 Back to Home
                 </button>
