@@ -5,14 +5,16 @@ import ScrollableAnchor from 'react-scrollable-anchor'
 class UserPaintList extends Component {
     render() {
         let paintings = this.props.paintings
-        console.log(paintings)
+        let key = 0;
         return (
-            
+            <ScrollableAnchor id={'collection'}>
             <div className="paint-list fade-in scroll">
                 {paintings.map(painting => {
-                    return <img data-id={painting.id} className="listed-paint" src={painting.img_url} alt="Painting"/>
+                    key+=1
+                    return <img data-id={painting.id} key={key} className="listed-paint" src={painting.img_url} alt="Painting"/>
                 })}       
             </div>
+            </ScrollableAnchor>
      
         );
     }

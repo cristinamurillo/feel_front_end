@@ -23,7 +23,7 @@ class PaintList extends Component {
             return (
                 <div className="paint-list fade-in">
                      {paintings.map(painting => {
-                         return <img onClick={this.clickHandler} data-id={painting.id} className="listed-paint" src={painting.attributes["img-url"]} alt="Painting"/>
+                         return <img onClick={this.clickHandler} data-id={painting.id} key={painting.id} className="listed-paint" src={painting.attributes["img-url"]} alt="Painting"/>
                      })}       
                 </div>
             )

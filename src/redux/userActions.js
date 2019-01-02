@@ -41,7 +41,6 @@ export const fetchCurrentUser = (token) => {
             headers: {'Authorization': `Bearer: ${token}`}
         }).then(response => {
             dispatch(fetchCurrentUserSuccess(response.data.user))
-            console.log('HI')
             console.log(response)
             return response.data.user 
         })
