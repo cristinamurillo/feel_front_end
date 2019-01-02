@@ -24,6 +24,10 @@ class PaintingSelect extends Component {
         localStorage.getItem('token') && this.props.dispatch(fetchCurrentUser(localStorage.getItem('token')))
     }
 
+    showTip = () => { document.getElementById('tooltip-text').style.visibility = "visible" }
+
+    hideTip = () => { document.getElementById('tooltip-text').style.visibility = "hidden" }
+
     changeHandler = (e) => {
         this.setState({
             [e.target.name]: e.target.value
@@ -67,7 +71,12 @@ class PaintingSelect extends Component {
         }
         return (
         <div className="section">
-        <h3 className="header">Choose an Artwork</h3>
+            <p id="tooltip-text" >Select an artwork or copy/paste the URL of an image you vibe with. Don't overthink it, just go with something you feel an affinity to.</p>
+            <h3 className="header">Choose an Artwork
+                <span className="tooltip-select" id="help" onMouseOver={this.showTip} onMouseLeave={this.hideTip}>?</span>
+            </h3>
+            
+    
             <div id="toggle">
             <p>Toggle View</p>
             <label className="switch">

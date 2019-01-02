@@ -57,6 +57,35 @@ button, input {
   color: darkred;
 }
 
+/* tooltips stuff */
+#tooltip-text {
+  visibility: hidden;
+  width: 120px;
+  background-color: whitesmoke;
+  color: #222;
+  border-radius: 6px;
+  padding: .3em 0;
+  z-index: 1;
+  position: absolute;
+  min-width: 22em;
+  margin-left: 57%;
+  font-size: .8em;
+}
+
+.tooltip-select:hover {
+  cursor: pointer;
+  background: whitesmoke
+}
+
+#help {
+  border: #222;
+  border-radius: 40%;
+  box-shadow: 0 0 2px 1px whitesmoke;
+  margin-left: .5em;
+  font-size: .7em;
+  padding: 4px 8px;
+}
+/* tooltip stuff end */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
