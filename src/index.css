@@ -70,7 +70,7 @@ code {
 }
 
 .single-paint {
-  max-height: 75vh;
+  max-height: 70vh;
   max-width: 100%;
   border-radius: 20px;
   box-shadow: 0 0 20px 2px rgb(0, 0, 0);
@@ -118,7 +118,11 @@ input {
   margin: 0 .4em;
 }
 
-
+.scroll {
+  overflow: scroll;
+  max-height: 75vh;
+  margin-top: 1em;
+}
 
 #signup{
   display: block; 
@@ -194,7 +198,7 @@ input {
 #prof-upper {
   background-image: url("pink-blue-smoke.jpg");
   background-size: cover;
-  height: 100vh;
+  height: 120vh;
 }
 
 /* #back-gradient {

@@ -26,7 +26,7 @@ class TimelineAnimation extends Component {
         width: 200px;
         height: 200px;
         border-radius: 50%;
-        animation: ${changeRingColor} 15s ease infinite;
+        animation: ${changeRingColor} 10s ease infinite;
         box-shadow: 0px 0px 100px 50px ${painting.color1}, 
                     inset 0 0 60px 20px ${painting.color6};
     `;
