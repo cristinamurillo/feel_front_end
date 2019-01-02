@@ -21,7 +21,7 @@ class PaintingSelect extends Component {
 
     componentDidMount() {
         this.props.dispatch(fetchPaintings())
-        this.props.dispatch(fetchCurrentUser(localStorage.getItem('token')))
+        localStorage.getItem('token') && this.props.dispatch(fetchCurrentUser(localStorage.getItem('token')))
     }
 
     changeHandler = (e) => {
