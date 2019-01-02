@@ -11,7 +11,9 @@ class TimelineCont extends Component {
         previous: 0,
         user_paintings: null,
         dates: [],
-        selectedPainting: {}
+        selectedPainting: {},
+        loading: false,
+        error: null
     }
 
     goBack = () => {
@@ -40,17 +42,22 @@ class TimelineCont extends Component {
     }
 
     componentDidMount(){
+        this.setState({
+            loading: true
+        })
         axios.get('http://localhost:3000/api/v1/timeline', {
             headers: {'Authorization': `Bearer: ${localStorage.getItem('token')}`}})
             .then(res => {
                 this.setState({
                     user_paintings: res.data,
-                    selectedPainting: res.data[0]
+                    selectedPainting: res.data[0],
+                    loading: false
                 }, () => this.createTimelineDates())  
             })
             .catch(error => {
                 this.setState({
-                    user_paintings: error
+                    error: error,
+                    loading: false
                 }) 
             })
     }
@@ -59,29 +66,31 @@ class TimelineCont extends Component {
         if(this.state.user_paintings) {
             const paintings = this.state.user_paintings
             console.log(paintings)
-        return (
-            <div className="fade-in">
-            <button onClick={this.goBack} type ="button" className="fade-in med-button back-button light">
-                        Back to Home
-                    </button>
-                <h2 className="header bigger">Timeline</h2>
-                {/* Bounding box for the Timeline */}
-                <div style={{ width: '60%', height: '100px', margin: '0 auto' }}>
-                <HorizontalTimeline
-                    index={this.state.value}
-                    indexClick={(e, index) => this.handleTimelineClick(e, index)}
-                    values={ this.state.dates } 
-                    styles={{background:'transparent', foreground:'#4e14f2', outline:'#dfdfdf'}}/>
+            return (
+                <div className="fade-in">
+                <button onClick={this.goBack} type ="button" className="fade-in med-button back-button light">
+                            Back to Home
+                        </button>
+                    <h2 className="header bigger">Timeline</h2>
+                    {/* Bounding box for the Timeline */}
+                    <div style={{ width: '60%', height: '100px', margin: '0 auto' }}>
+                    <HorizontalTimeline
+                        index={this.state.value}
+                        indexClick={(e, index) => this.handleTimelineClick(e, index)}
+                        values={ this.state.dates } 
+                        styles={{background:'transparent', foreground:'#4e14f2', outline:'#dfdfdf'}}/>
+                    </div>
+                    <div className='text-center'>
+                    {/* any arbitrary component can go here */}    
+                    <TimelineAnimation painting={this.state.selectedPainting}/>
+                    </div>
                 </div>
-                <div className='text-center'>
-                {/* any arbitrary component can go here */}    
-                <TimelineAnimation painting={this.state.selectedPainting}/>
-                </div>
-            </div>
-        );
+            );
+        } else if(this.state.loading) {
+            return <p className="centered">Loading</p>
         } else {
-            return <p className="error">Unauthorized: Login or Sign Up to view a timeline</p>
-        }
+            return <p className="error centered">Unauthorized: Login or Sign Up to view a timeline</p>
+        } 
     }
 }
 

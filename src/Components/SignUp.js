@@ -13,6 +13,10 @@ class SignUp extends Component {
         invalid_pass: false,
         errors: {}
     }
+    
+    goBack = () => {
+        this.props.history.replace('/')
+    }
 
     changeHandler = (e) => {
         this.setState({
@@ -53,19 +57,24 @@ class SignUp extends Component {
     render(){
 
         return(
-            <div className="section">
-                <h3>Sign Up</h3>
-                {this.state.invalid_pass && <p className="error">Passwords do not match</p>}
-                {Object.keys(this.state.errors).length > 0 && this.errors()}
-                <form onSubmit={this.submitHandler} id="signup">
-                    <input type="text" name="first_name" placeholder="First name" value={this.state.first_name} onChange={this.changeHandler}/>
-                    <input type="text" name="last_name" placeholder="Last name" value={this.state.last_name} onChange={this.changeHandler}/>
-                    <input type="text" name="email" placeholder="E-mail" value={this.state.email} onChange={this.changeHandler}/>
-                    <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler}/>
-                    <input type="password" name="confirm_password" placeholder="Confirm password" value={this.state.confirm_password} onChange={this.changeHandler}/>
-                    <input type= "submit" value="Submit"/>
-                </form>
-            </div>
+            <React.Fragment>
+                <button onClick={this.goBack} type ="button" className="med-button back-button">
+                Back to Home
+                </button>
+                <div className="section">
+                    <h2>Sign Up</h2>
+                    {this.state.invalid_pass && <p className="error">Passwords do not match</p>}
+                    {Object.keys(this.state.errors).length > 0 && this.errors()}
+                    <form onSubmit={this.submitHandler} id="signup">
+                        <input type="text" name="first_name" placeholder="First name" value={this.state.first_name} onChange={this.changeHandler}/>
+                        <input type="text" name="last_name" placeholder="Last name" value={this.state.last_name} onChange={this.changeHandler}/>
+                        <input type="text" name="email" placeholder="E-mail" value={this.state.email} onChange={this.changeHandler}/>
+                        <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler}/>
+                        <input type="password" name="confirm_password" placeholder="Confirm password" value={this.state.confirm_password} onChange={this.changeHandler}/>
+                        <input type= "submit" value="Submit"/>
+                    </form>
+                </div>
+            </React.Fragment>
         )
     }
 

@@ -22,10 +22,10 @@ class Animation extends Component {
       } else if(this.props.error || this.props.colors.length < 7) {
           return (
             <div>
-                <button onClick={this.goBack} type ="button" className="med-button back-button">
+                <button onClick={this.goBack} type="button" className="med-button back-button" id="relative">
                 Back to Home
                 </button>
-                <div><p className="centered">Image invalid for color analysis, please try a different URL</p></div> 
+                <p className="centered">Image invalid for color analysis, please try a different URL</p> 
             </div>
           ) 
       } else {
