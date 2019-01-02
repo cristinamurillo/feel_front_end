@@ -9,27 +9,44 @@ class TimelineCont extends Component {
     state = { 
         value: 0, 
         previous: 0,
-        user_paintings: null 
+        user_paintings: null,
+        dates: [],
+        selectedPainting: {}
     }
 
     goBack = () => {
         this.props.history.push('/')
     }
 
+    createTimelineDates = () => {
+        let dates = []
+        this.state.user_paintings.forEach(user_painting => {
+            let currentDate = user_painting.created_at.slice(0,10)
+            dates.push(currentDate)
+        })
+
+        this.setState({
+            dates: dates
+        }, () => console.log(this.state.dates))
+    }
+
     handleTimelineClick = (index) => {
+        console.log(index)
         this.setState({ 
             value: index, 
-            previous: this.state.value 
+            previous: this.state.value,
+            selectedPainting: this.state.user_paintings[index]
         })
     }
 
     componentDidMount(){
         axios.get('http://localhost:3000/api/v1/timeline', {
             headers: {'Authorization': `Bearer: ${localStorage.getItem('token')}`}})
-            .then(data => {
+            .then(res => {
                 this.setState({
-                    user_paintings: data
-                })  
+                    user_paintings: res.data,
+                    selectedPainting: res.data[0]
+                }, () => this.createTimelineDates())  
             })
             .catch(error => {
                 this.setState({
@@ -53,12 +70,12 @@ class TimelineCont extends Component {
                 <HorizontalTimeline
                     index={this.state.value}
                     indexClick={(e, index) => this.handleTimelineClick(e, index)}
-                    values={ ['2017-10-05','2017-10-05','2018-01-05', '2018-01-07', '2018-01-10'] } 
+                    values={ this.state.dates } 
                     styles={{background:'transparent', foreground:'#4e14f2', outline:'#dfdfdf'}}/>
                 </div>
                 <div className='text-center'>
                 {/* any arbitrary component can go here */}    
-                <TimelineAnimation />
+                <TimelineAnimation painting={this.state.selectedPainting}/>
                 </div>
             </div>
         );
