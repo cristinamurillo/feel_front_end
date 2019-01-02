@@ -25,13 +25,13 @@ export const fetchPaintings = () => {
         dispatch(fetchPaintingsBegin())
         return axios.get("http://localhost:3000/paintings/")
             .then(response => {
-                console.log(response)
+                
                 let paintings = response.data.data
                 dispatch(fetchPaintingsSuccess(paintings))
                 return paintings 
             })
             .catch(error => {
-                console.log(error)
+                
                 dispatch(fetchPaintingsFailure(error))
             })
     }

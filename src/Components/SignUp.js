@@ -49,9 +49,9 @@ class SignUp extends Component {
     errors = () => {
         let errors =[]
         for(let field in this.state.errors){
-            errors.push(<p className="error">{field} {this.state.errors[field]}</p>)
+            errors.push(<p>{field} {this.state.errors[field]}</p>)
         }
-        return errors
+        return <div className="error">{errors}</div>
     }
 
     render(){
