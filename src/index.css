@@ -13,6 +13,10 @@ h1 {
   text-shadow: 0 0 0.8em white;
 }
 
+h2 {
+  text-shadow: 0 0 0.8em white;
+}
+
 #subtitle {
   margin-top: 0;
   margin-bottom: 10em; 
@@ -418,6 +422,8 @@ hr {
 /*   -webkit-animation: rotate 20s infinite linear; */
   animation: rotate 20s infinite linear;
 }
+
+
 
 @keyframes rotate {
   0% {
