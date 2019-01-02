@@ -9,9 +9,6 @@ class TimelineAnimation extends Component {
         margin: 0;
         padding: 0;
         `
-        // let colors = this.props.colors 
-        // console.log("LOOK HERE")
-        // console.log(this.props)
         const painting = this.props.painting.painting
         let changeRingColor = keyframes`
         0% {
@@ -26,7 +23,7 @@ class TimelineAnimation extends Component {
         width: 200px;
         height: 200px;
         border-radius: 50%;
-        animation: ${changeRingColor} 15s ease infinite;
+        animation: ${changeRingColor} 10s ease infinite;
         box-shadow: 0px 0px 100px 50px ${painting.color1}, 
                     inset 0 0 60px 20px ${painting.color6};
     `;

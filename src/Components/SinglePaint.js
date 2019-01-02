@@ -14,7 +14,7 @@ class SinglePaint extends Component {
     }
 
     componentDidMount() {
-        this.props.dispatch(fetchCurrentUser(localStorage.getItem('token')))
+        localStorage.getItem('token') && this.props.dispatch(fetchCurrentUser(localStorage.getItem('token')))
     }
   
     clickHandler = () => {

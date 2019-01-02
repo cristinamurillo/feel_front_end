@@ -70,7 +70,7 @@ code {
 }
 
 .single-paint {
-  max-height: 75vh;
+  max-height: 70vh;
   max-width: 100%;
   border-radius: 20px;
   box-shadow: 0 0 20px 2px rgb(0, 0, 0);
@@ -115,13 +115,26 @@ code {
 input {
   padding: .6em;
   border-radius: 4px;
-  margin: 0 .4em;
+  margin: .2em .4em;
 }
 
-
+.scroll {
+  overflow: scroll;
+  max-height: 72vh;
+  margin-top: 1em;
+  padding-left: 2em;
+  padding-right: 2em;
+  margin-right: 2em;
+  margin-left: 2em;
+  border-radius: 8px;
+  box-shadow: 0 0 15px 2px whitesmoke;
+}
 
 #signup{
-  display: block; 
+  display: flex;
+  flex-direction: column;
+  max-width: 13em;
+  margin: 0 auto;
 }
 
 .med-button {
@@ -158,9 +171,9 @@ input {
 .light {
   display: flex;
   position: absolute;
-  background: gray;
+  color: rgba(245,245,245,.7);
   margin-left: 2em;
-  box-shadow: 0 0 3px whitesmoke;
+  box-shadow: 0 0 3px 1px whitesmoke;
 }
 
 .light:hover{
@@ -168,9 +181,15 @@ input {
 }
 
 .back-button {
-  margin-right: 80%;
+  margin-left: 2%;
   margin-top: 2%;
   border: none;
+  display: flex;
+  position: absolute;
+}
+
+#relative {
+  position: relative;
 }
 
 .fade-in {
@@ -194,7 +213,7 @@ input {
 #prof-upper {
   background-image: url("pink-blue-smoke.jpg");
   background-size: cover;
-  height: 100vh;
+  height: 120vh;
 }
 
 /* #back-gradient {

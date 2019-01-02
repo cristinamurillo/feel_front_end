@@ -22,10 +22,10 @@ class Animation extends Component {
       } else if(this.props.error || this.props.colors.length < 7) {
           return (
             <div>
-                <button onClick={this.goBack} type ="button" className="med-button back-button">
+                <button onClick={this.goBack} type="button" className="med-button back-button" id="relative">
                 Back to Home
                 </button>
-                <div><p className="centered">Image invalid for color analysis, please try a different URL</p></div> 
+                <p className="centered">Image invalid for color analysis, please try a different URL</p> 
             </div>
           ) 
       } else {
@@ -43,7 +43,7 @@ class Animation extends Component {
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            animation: ${changeRingColor} 15s ease infinite;
+            animation: ${changeRingColor} 10s ease infinite;
             box-shadow: 0px 0px 100px 50px ${painting.color1}, 
                         inset 0 0 60px 20px ${painting.color6};
         `;

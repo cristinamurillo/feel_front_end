@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import {fetchCurrentUser} from '../redux/userActions'
 import UserPaintList from './UserPaintList';
+import ScrollableAnchor, { goToAnchor } from 'react-scrollable-anchor';
 
 
 class Profile extends Component {
@@ -20,8 +21,11 @@ class Profile extends Component {
     }
 
     showArt = () => {
+        console.log('we here')
         this.setState({
             showArt: !this.state.showArt
+        }, () => {
+            this.state.showArt && goToAnchor('collection', true)
         })
     }
 
@@ -31,7 +35,6 @@ class Profile extends Component {
     }
 
     render(){
-        console.log(this.props)
         if(this.props.user) {
             const user = this.props.user
             return(
@@ -46,7 +49,9 @@ class Profile extends Component {
                         {this.state.showArt ?
                         <React.Fragment>
                             <button onClick={this.showArt}className="large-button">Hide Collection</button>
-                            <UserPaintList paintings={user.paintings}/>
+                            {/* <ScrollableAnchor id={'collection'}> */}
+                                <UserPaintList paintings={user.paintings}/>
+                            {/* </ScrollableAnchor> */}
                         </React.Fragment>
                         :<button onClick={this.showArt}className="large-button">Show Collection</button>}
                     </div>
