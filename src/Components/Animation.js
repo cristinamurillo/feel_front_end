@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import styled from 'styled-components'
+import styled, {keyframes} from 'styled-components'
 import {withRouter} from 'react-router-dom'
 
 
@@ -30,14 +30,22 @@ class Animation extends Component {
           ) 
       } else {
         let painting = this.props.colors.data.attributes 
-        console.log("LOOK HERE")
-        console.log(this.props)
+        let changeRingColor = keyframes`
+            0% {
+                box-shadow: 0px 0px 100px 50px ${painting.color1}, inset 0 0 60px 20px ${painting.color6};
+            } 50% {
+                box-shadow: 0px 0px 100px 50px ${painting.color6}, inset 0 0 60px 20px ${painting.color4};
+            } 100% {
+                box-shadow: 0px 0px 100px 50px ${painting.color1}, inset 0 0 60px 20px ${painting.color6};
+            }
+        `
         let HaloRing = styled.div`
             width: 200px;
             height: 200px;
             border-radius: 50%;
+            animation: ${changeRingColor} 15s ease infinite;
             box-shadow: 0px 0px 100px 50px ${painting.color1}, 
-                        inset 0 0 60px 20px ${painting.color7};
+                        inset 0 0 60px 20px ${painting.color6};
         `;
 
         let InnerCircle = styled.div`
@@ -47,8 +55,9 @@ class Animation extends Component {
         transform-style: preserve-3d;
         border-radius: 100%;
         box-sizing: border-box;
-        box-shadow: 0px 5px 70px 10px ${painting.color3}, 
-                    inset 0 0 40px ${painting.color4};
+       
+        box-shadow: 0px 5px 70px 10px ${painting.color2}, 
+                    inset 0 0 40px ${painting.color3};
 
         ::before {
             content: "";
@@ -63,8 +72,6 @@ class Animation extends Component {
             height: 10%;
             border-radius: 100%;
             box-sizing: border-box;
-            background: ${painting.color6}
-            box-shadow: 0 0 100px 10px ${painting.color6};
             transform: translateZ(-90px);
         }
 
@@ -81,8 +88,6 @@ class Animation extends Component {
             height: 10%;
             border-radius: 100%;
             box-sizing: border-box;
-            background: ${painting.color5}
-            box-shadow: 0 0 100px 10px ${painting.color5};
             transform: translateZ(90px);
         }
 
