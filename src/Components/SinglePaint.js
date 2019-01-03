@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import {fetchColors} from '../redux/animationActions'
 import {fetchCurrentUser, postJoin} from '../redux/userActions'
+import EditForm from './EditForm'
 
 
 
@@ -65,6 +66,7 @@ class SinglePaint extends Component {
                 <p>{!hasAttr() && `No information available for this artwork, try right clicking and select 'Search Google for Image'`}</p>
             </div>
             }
+            {/* <EditForm paintid={img.id} url={url}/> */}
             <div className="horiz-flex">
                 <button onClick={() => this.randomNum(this.props.paintings)} className="med-button" id="anotha">Another One</button>
                 <button onClick={this.infoClickHandler} className="med-button" id="anotha">{this.state.moreInfo ? "Hide Info": "Artwork Info"}</button>
