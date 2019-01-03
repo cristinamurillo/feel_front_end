@@ -107,7 +107,7 @@ class PaintingSelect extends Component {
                 <input id="img-url" type="text" name="description" placeholder="Description (optional) " value={this.state.description} onChange ={this.changeHandler}/>
                 </React.Fragment>
                 }
-                <input type= "submit" value="Submit" style={{width: "14em", margin: "0 auto"}}/>
+                <input className="submit" type= "submit" value="Submit" style={{width: "14em", margin: "0 auto"}}/>
             </form>
             {this.state.errorMessage && <p className="error">{this.state.errorMessage}</p>}
            {this.state.singleView && paintings.length > 1 ? 

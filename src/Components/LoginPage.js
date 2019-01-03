@@ -101,7 +101,7 @@ class LoginPage extends Component {
                     <form onSubmit={this.submitHandler}>
                         <input type="text" name="email" placeholder="E-mail" value={this.state.email} onChange={this.changeHandler}/>
                         <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler} />
-                        <input type= "submit" value="Submit"/>
+                        <input className ="submit" type= "submit" value="Submit"/>
                     </form>
                     {this.state.invalid && <p className="error">Invalid e-mail or password</p>}
                 </div>
