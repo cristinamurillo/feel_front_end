@@ -125,6 +125,38 @@ code {
 
 }
 
+.popup-paint {
+  max-height: 50vh;
+  max-width: 80%;
+  border-radius: 20px;
+  margin-top: 1.5em;
+  box-shadow: 0 0 4px 1px #222;
+}
+
+.modal-content {
+  width: 100%;
+  padding: 10px 5px;
+}
+
+.popup-content {
+  position: relative; 
+  background: whitesmoke !important; 
+  box-shadow: 0 0 4px 2px #222;
+  border-radius: 10px;
+  max-width: 80% !important; 
+  margin: auto; 
+  border: 1px solid rgb(187, 187, 187); 
+  padding: 5px 0px !important;
+}
+.popup-content h4 {
+  margin-top: .8em;
+  margin-bottom: .8em;
+}
+.popup-content h5{
+  margin: 0 auto;
+}
+
+
 #anotha {
   display: flex;
   margin: 0 auto;
@@ -165,7 +197,7 @@ input {
 .scroll {
   overflow: scroll;
   max-height: 72vh;
-  margin-top: 1em;
+  margin-top: 1.3em;
   padding-left: 2em;
   padding-right: 2em;
   margin-right: 2em;
