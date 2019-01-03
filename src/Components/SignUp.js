@@ -117,7 +117,7 @@ class SignUp extends Component {
                     <h2>Sign Up</h2>
                     {this.state.invalid_pass && <p className="error">Passwords do not match</p>}
                     {Object.keys(this.state.errors).length > 0 && this.errors()}
-                    <form onSubmit={this.submitHandler} id="signup">
+                    <form onSubmit={this.submitHandler} className="vertical-form">
                         <input type="text" name="first_name" placeholder="First name" value={this.state.first_name} onChange={this.changeHandler}/>
                         <input type="text" name="last_name" placeholder="Last name" value={this.state.last_name} onChange={this.changeHandler}/>
                         <input type="text" name="email" placeholder="E-mail" value={this.state.email} onChange={this.changeHandler}/>

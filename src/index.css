@@ -167,7 +167,7 @@ code {
 
 #anotha {
   display: flex;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   margin-top: 1.5em;
 }
 
@@ -187,10 +187,6 @@ code {
   text-shadow: 0 0 0.8em white;
 }
 
-#img-url {
-  width: 30%;
-  margin-right: .7em;
-}
 
 input {
   padding: .85em;
@@ -214,11 +210,15 @@ input {
   box-shadow: 0 0 15px 2px whitesmoke;
 }
 
-#signup{
+.vertical-form {
   display: flex;
   flex-direction: column;
   max-width: 13em;
   margin: 0 auto;
+}
+
+.vertical-form.large {
+  max-width: 30em !important;
 }
 
 .med-button {
@@ -338,6 +338,11 @@ form {
   opacity: 0;
   width: 0;
   height: 0;
+}
+
+.horiz-flex {
+  display: flex;
+  justify-content: center;
 }
 
 /* The slider */

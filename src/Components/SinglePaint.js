@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import {fetchColors} from '../redux/animationActions'
 import {fetchCurrentUser, postJoin} from '../redux/userActions'
+import EditForm from './EditForm'
 
 
 
@@ -10,7 +11,8 @@ class SinglePaint extends Component {
 
     state = {
         paintsSeen: [0],
-        currentPaint: Math.floor(Math.random()*this.props.paintings.length)
+        currentPaint: Math.floor(Math.random()*this.props.paintings.length),
+        moreInfo: false
     }
 
     componentDidMount() {
@@ -22,6 +24,12 @@ class SinglePaint extends Component {
         this.props.dispatch(fetchColors(img.id))
         this.props.dispatch(postJoin(this.props.user.id, img.id))
         this.props.history.push('/animation')
+    }
+
+    infoClickHandler = () => {
+        this.setState({
+            moreInfo: !this.state.moreInfo
+        })
     }
 
     randomNum = (array) => {
@@ -40,11 +48,29 @@ class SinglePaint extends Component {
    
     render() {
         let img = this.props.paintings[this.state.currentPaint]
+        let attr = img.attributes
+        let hasAttr = () => { if(attr.title || attr.description || attr.artist){
+                                return true
+                                } return false
+                            }
+        console.log(hasAttr())
         let url = img.attributes["img-url"]
     return (
         <div className="section">
             <img onClick={this.clickHandler} className="single-paint" data-id={img.id} src={url} alt="Painting"/>
-            <button onClick={() => this.randomNum(this.props.paintings)} className="med-button" id="anotha">Another One</button>
+            {this.state.moreInfo && 
+            <div>
+                <h3>{attr.title && attr.title}</h3>
+                <h4>{attr.artist && attr.artist}</h4>
+                <p>{attr.description && attr.description}</p>
+                <p>{!hasAttr() && `No information available for this artwork, try right clicking and select 'Search Google for Image'`}</p>
+            </div>
+            }
+            {/* <EditForm paintid={img.id} url={url}/> */}
+            <div className="horiz-flex">
+                <button onClick={() => this.randomNum(this.props.paintings)} className="med-button" id="anotha">Another One</button>
+                <button onClick={this.infoClickHandler} className="med-button" id="anotha">{this.state.moreInfo ? "Hide Info": "Artwork Info"}</button>
+            </div>
         </div>
     );
     }

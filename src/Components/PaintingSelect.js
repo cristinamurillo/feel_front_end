@@ -15,6 +15,10 @@ class PaintingSelect extends Component {
 
     state = {
         img_url: "",
+        title: null,
+        artist: null,
+        description: null,
+        fullForm: false,
         singleView: true,
         errorMessage: null
     }
@@ -29,6 +33,11 @@ class PaintingSelect extends Component {
     hideTip = () => { document.getElementById('tooltip-text').style.visibility = "hidden" }
 
     changeHandler = (e) => {
+        if(e.target.name === "img_url"){
+            this.setState({
+                fullForm: true
+            })
+        }
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -42,8 +51,13 @@ class PaintingSelect extends Component {
     
     submitURLHandler = (e) => {
         e.preventDefault()
-        console.log("submit hit")
-        axios.post(PAINTINGS_URL, {img_url: this.state.img_url})
+         let painting = {
+            img_url: this.state.img_url,
+            title: this.state.title,
+            artist: this.state.artist,
+            description: this.state.description
+        }
+        axios.post(PAINTINGS_URL, painting)
             .then(response => {
                 let painting = response.data.data
                 this.props.dispatch(fetchColors(painting.id))
@@ -84,9 +98,16 @@ class PaintingSelect extends Component {
                 <span className="slider"/>
             </label>
             </div>
-            <form onSubmit={this.submitURLHandler}>
-                <input id="img-url" type="text" name="img_url" placeholder="Image URL" value={this.state.img_url} onChange ={this.changeHandler}/>
-                <input type= "submit" value="Submit"/>
+            <form onSubmit={this.submitURLHandler} className="vertical-form large">
+                <input id="img-url" type="text" name="img_url" placeholder="Image URL" value={this.state.img_url} onChange ={this.changeHandler} required/>
+                {this.state.fullForm &&
+                <React.Fragment>
+                <input id="img-url" type="text" name="title" placeholder="Title (optional)" value={this.state.title} onChange ={this.changeHandler}/>
+                <input id="img-url" type="text" name="artist" placeholder="Artist (optional)" value={this.state.artist} onChange ={this.changeHandler}/>
+                <input id="img-url" type="text" name="description" placeholder="Description (optional) " value={this.state.description} onChange ={this.changeHandler}/>
+                </React.Fragment>
+                }
+                <input type= "submit" value="Submit" style={{width: "14em", margin: "0 auto"}}/>
             </form>
             {this.state.errorMessage && <p className="error">{this.state.errorMessage}</p>}
            {this.state.singleView && paintings.length > 1 ? 
