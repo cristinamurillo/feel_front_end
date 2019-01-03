@@ -167,7 +167,7 @@ code {
 
 #anotha {
   display: flex;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   margin-top: 1.5em;
 }
 
@@ -338,6 +338,11 @@ form {
   opacity: 0;
   width: 0;
   height: 0;
+}
+
+.horiz-flex {
+  display: flex;
+  justify-content: center;
 }
 
 /* The slider */
