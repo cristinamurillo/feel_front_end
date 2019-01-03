@@ -123,7 +123,7 @@ class SignUp extends Component {
                         <input type="text" name="email" placeholder="E-mail" value={this.state.email} onChange={this.changeHandler}/>
                         <input type="password" name="password" placeholder="Password" value={this.state.password} onChange={this.changeHandler}/>
                         <input type="password" name="confirm_password" placeholder="Confirm password" value={this.state.confirm_password} onChange={this.changeHandler}/>
-                        <input type= "submit" value="Submit"/>
+                        <input className="submit" type= "submit" value="Submit"/>
                     </form>
                 </div>
             </React.Fragment>

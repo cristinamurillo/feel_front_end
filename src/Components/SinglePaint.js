@@ -59,7 +59,7 @@ class SinglePaint extends Component {
         <div className="section">
             <img onClick={this.clickHandler} className="single-paint" data-id={img.id} src={url} alt="Painting"/>
             {this.state.moreInfo && 
-            <div>
+            <div id="display-info">
                 <h3>{attr.title && attr.title}</h3>
                 <h4>{attr.artist && attr.artist}</h4>
                 <p>{attr.description && attr.description}</p>

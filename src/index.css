@@ -164,6 +164,19 @@ code {
   
 }
 
+#display-info h4 {
+  margin: 0 auto
+}
+
+#display-info h3 {
+  margin-bottom: .5em;
+}
+
+.submit:hover {
+  background: black;
+  color: white;
+  transition: all .5s;
+}
 
 #anotha {
   display: flex;
