@@ -10,7 +10,7 @@ class PaintView extends Component {
                 <img data-id={painting.id} className="popup-paint" src={painting.img_url} alt="Painting"/>
                 <h4>{painting.title && painting.title}</h4>
                 <h5>{painting.artist && painting.artist}</h5>
-                <p>{painting.description && `"${painting.description}"`}</p>
+                <p className="small-scroll">{painting.description && `"${painting.description}"`}</p>
             </div>
         );
     }

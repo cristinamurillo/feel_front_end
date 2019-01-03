@@ -156,6 +156,14 @@ code {
   margin: 0 auto;
 }
 
+.small-scroll {
+  overflow: scroll;
+
+  margin-right: 10%;
+  margin-left: 8%;
+  
+}
+
 
 #anotha {
   display: flex;
