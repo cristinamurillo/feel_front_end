@@ -46,7 +46,7 @@ class Profile extends Component {
                         <button onClick={this.goToTimeline} className="large-button">Timeline</button>
                         {this.state.showArt ?
                         <React.Fragment>
-                            <button onClick={this.showArt}className="large-button">Hide Collection</button>
+                            <button onClick={this.showArt} className="large-button">Hide Collection</button>
                             {/* <ScrollableAnchor id={'collection'}> */}
                                 <UserPaintList paintings={user.paintings}/>
                             {/* </ScrollableAnchor> */}
