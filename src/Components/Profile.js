@@ -57,7 +57,7 @@ class Profile extends Component {
             )
         } else {
             return(
-                <p className="error">you don't have access 2 this... sign up 4 ur colors smh</p>
+                <p className="error centered">you don't have access 2 this... sign up 4 ur colors smh</p>
             )
         }
     }

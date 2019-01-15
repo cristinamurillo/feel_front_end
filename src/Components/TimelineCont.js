@@ -22,7 +22,7 @@ class TimelineCont extends Component {
 
     createTimelineDates = () => {
         let dates = []
-        if (this.state.user_paintings.length > 1) {
+        if (this.state.user_paintings.length > 0) {
             this.state.user_paintings.forEach(user_painting => {
                 let currentDate = user_painting.created_at.slice(0,10)
                 dates.push(currentDate)
@@ -83,7 +83,7 @@ class TimelineCont extends Component {
                         styles={{background:'transparent', foreground:'#4e14f2', outline:'#dfdfdf'}}/>
                     </div>
                     <div className='text-center'>
-                    {paintings.length >1 ?<TimelineAnimation painting={this.state.selectedPainting}/>:
+                    {paintings.length > 0 ? <TimelineAnimation painting={this.state.selectedPainting}/>:
                     <p>You haven't selected any artworks. Go back to home to get started :)</p>}
                     </div>
                 </div>
@@ -91,7 +91,7 @@ class TimelineCont extends Component {
         } else if(this.state.loading) {
             return <p className="centered">Loading</p>
         } else {
-            return <p className="error centered">Unauthorized: Login or Sign Up to view a timeline</p>
+            return <h4 className="error centered">Unauthorized: Login or Sign Up to view a timeline</h4>
         } 
     }
 }

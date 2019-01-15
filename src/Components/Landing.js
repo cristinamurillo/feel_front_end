@@ -35,7 +35,8 @@ class Landing extends Component {
         localStorage.removeItem('user')
         this.setState({
             logStatus: !this.state.logStatus
-        })
+        }, () => window.alert("Logged out!"))
+
     }
 
     goToProfile = () => {
