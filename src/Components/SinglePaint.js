@@ -53,7 +53,6 @@ class SinglePaint extends Component {
                                 return true
                                 } return false
                             }
-        console.log(hasAttr())
         let url = img.attributes["img-url"]
     return (
         <div className="section">

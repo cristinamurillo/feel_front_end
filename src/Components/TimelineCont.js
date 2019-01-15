@@ -22,18 +22,21 @@ class TimelineCont extends Component {
 
     createTimelineDates = () => {
         let dates = []
-        this.state.user_paintings.forEach(user_painting => {
-            let currentDate = user_painting.created_at.slice(0,10)
-            dates.push(currentDate)
-        })
+        if (this.state.user_paintings.length > 0) {
+            this.state.user_paintings.forEach(user_painting => {
+                let currentDate = user_painting.created_at.slice(0,10)
+                dates.push(currentDate)
+            })
+        } else {
+            dates = ['2000-01-01', '2000-03-01', '2000-05-01']
+        }
 
         this.setState({
             dates: dates
-        }, () => console.log(this.state.dates))
+        })
     }
 
     handleTimelineClick = (index) => {
-        console.log(index)
         this.setState({ 
             value: index, 
             previous: this.state.value,
@@ -65,7 +68,6 @@ class TimelineCont extends Component {
     render() {
         if(this.state.user_paintings) {
             const paintings = this.state.user_paintings
-            console.log(paintings)
             return (
                 <div className="fade-in">
                 <button onClick={this.goBack} type ="button" className="fade-in med-button back-button light">
@@ -81,15 +83,15 @@ class TimelineCont extends Component {
                         styles={{background:'transparent', foreground:'#4e14f2', outline:'#dfdfdf'}}/>
                     </div>
                     <div className='text-center'>
-                    {/* any arbitrary component can go here */}    
-                    <TimelineAnimation painting={this.state.selectedPainting}/>
+                    {paintings.length > 0 ? <TimelineAnimation painting={this.state.selectedPainting}/>:
+                    <p>You haven't selected any artworks. Go back to home to get started :)</p>}
                     </div>
                 </div>
             );
         } else if(this.state.loading) {
             return <p className="centered">Loading</p>
         } else {
-            return <p className="error centered">Unauthorized: Login or Sign Up to view a timeline</p>
+            return <h4 className="error centered">Unauthorized: Login or Sign Up to view a timeline</h4>
         } 
     }
 }

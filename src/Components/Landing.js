@@ -35,7 +35,8 @@ class Landing extends Component {
         localStorage.removeItem('user')
         this.setState({
             logStatus: !this.state.logStatus
-        })
+        }, () => window.alert("Logged out!"))
+
     }
 
     goToProfile = () => {
@@ -85,6 +86,7 @@ class Landing extends Component {
         `
         return (
             <div className="section">
+
                 {localStorage.getItem('token') ? 
                 <div className="top-nav">
                     <button onClick={this.goToProfile} className="med-button">Profile</button>
@@ -112,3 +114,5 @@ class Landing extends Component {
 
 
 export default withRouter(Landing)
+
+
