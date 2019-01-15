@@ -85,6 +85,7 @@ class Landing extends Component {
         `
         return (
             <div className="section">
+
                 {localStorage.getItem('token') ? 
                 <div className="top-nav">
                     <button onClick={this.goToProfile} className="med-button">Profile</button>
@@ -112,3 +113,5 @@ class Landing extends Component {
 
 
 export default withRouter(Landing)
+
+
